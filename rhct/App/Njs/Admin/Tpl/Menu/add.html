@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+	<meta charset="utf-8" />
+	<title>自定义菜单</title>
+	<link href="../Public/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="../Public/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="../Public/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="../Public/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+	<link href="../Public/css/style.css" rel="stylesheet" type="text/css"/>
+
+	<link href="../Public/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+	<link href="../Public/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+	<link href="../Public/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+</head>
+<body style="background-color:#fff !important;margin:20px !important;">
+	<div class="page-container row-fluid">
+
+		<form method="post" action="{:U('Menu/save')}">
+			<input type="hidden" name="id" value="{$sign.id}" />
+			<h3>添加自定义菜单</h3>
+			<div class='control-group'>
+				<label class='control-label'>菜单名称</label>
+				<div class='controls'>
+					<input type="text" class="span6" name="name" value="{$sign.name}" placeholder='请输入菜单显示名称' />
+				</div>
+			</div>
+
+			<div class='contorl-group'>
+				<label class='control-label'>菜单类别</label>
+				<div class='controls'>
+					<select name="type" class='span6'>
+						<option value='click' <eq name="sign.type" value="click">selected="selected"</eq> >点击事件</option>
+						<option value='view' <eq name="sign.type" value="view">selected="selected"</eq> >访问网页</option>
+					</select>
+				</div>
+			</div>
+
+			<div class='control-group'>
+				<label class='control-label'>所属菜单</label>
+				<div class='controls'>
+					<select name='pid' class='span6'>
+						<option value='0' <eq name="top_size" value="3">disabled='disabled'</eq> > ==顶级菜单== </option>
+						<volist name='plist' id='vo'>
+						<option value='{$vo.id}' <eq name="vo.count" value="5">disabled="disabled"</eq> <eq name="sign.pid" value="$vo.id">selected="selected"</eq> >{$vo.name}</option>
+						</volist>
+					</select>
+				</div>
+			</div>
+
+			<div class='control-group view menu-type'>
+				<label class='control-label'>URL</label>
+				<div class='controls'>
+					<input type="text" class="span6" name="url" value="{$sign.url}" placeholder="请输入单击菜单访问的网页" />
+				</div>
+			</div>
+			<div class='control-group click menu-type'>
+				<label class='control-label'>EventKey</label>
+				<div class='controls'>
+					<input type='text' class='span6' name="key" value="{$sign.key}" placeholder='请输入单击菜单发送的key'/>
+				</div>
+			</div>
+
+			<div class='control-group'>
+				<div class='controls'>
+					<button name='submit' type='submit' class='btn green'>确定</button>
+					<button type='reset' class='btn'>清空</button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+	<script type="text/javascript" src="../Public/js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$("select[name='type']").change(function(){
+
+		});
+	});
+	</script>
+</body>
+</html>

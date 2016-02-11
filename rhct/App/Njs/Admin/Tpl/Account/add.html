@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+    <meta charset="utf-8" />
+    <title>t</title>
+    <link href="../Public/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/bootstrap-fileupload.css" rel="stylesheet" type="text/css" />
+    <link href="../Public/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/style-metro.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="../Public/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/uploadify.css" rel="stylesheet" type="text/css"/>
+<style>
+    .slide-list {
+        list-style-type: none;
+        margin-left: 0px;
+    }
+
+    .slide-list li {
+        /*display: inSlide-block;*/
+        display: block;
+        width: 120px;
+        text-align: center;
+        margin-right: 5px;
+        float: left;
+    }
+
+    .slide-list li img {
+        width: 120px;
+        height: 110px;
+        border: 1px solid #ccc;
+        padding: 1px;
+    }
+
+    .slide-list li a {
+        margin-top: 3px;
+    }
+
+</style>
+</head>
+<body style="background-color:#fff !important;margin:20px !important;">
+<div class="page-container row-fluid">
+    <div class='btn-group '>
+        <h3><neq name='sign.id' value=''>编辑<else/>发表</neq>幻灯片</h3>
+    </div>
+    <div class='btn-group' style='float:right;'>
+        <a class='btn black mr10' href='javascript:history.back();'>
+            <i class='icon-arrow-left'></i>
+            返回</a>
+    </div>
+    <hr style='margin-top:0px'/>
+    <div class='alert alert-info' style='display:none;'>
+        <button class='close' data-dismiss='alert' onclick='$(this).parent().remove()'></button>
+        <span class='alert-msg'></span>
+    </div>
+
+    <form id='fm' class='form-horizontal' method="post" action="{:U(MODULE_NAME.'/save')}">
+        <input type="hidden" name="id" value="{$sign.id}"/>
+        <div class='control-group'>
+            <label class='control-label'>商品名称</label>
+            <div class='controls'>
+                <input type='text' class='span6' name='title' value='{$sign.title}' />
+            </div>
+        </div>
+        <div class='control-group' id="img">
+            <label class='control-label'>幻灯图片</label>
+            <div class='controls col-md-9'>
+                <input type="hidden" class='imgval' name="img" value="{$sign.img|default='new.jpg'}" />
+                <img src='__PUBLIC__/upload/{$sign.img|default="new.jpg"}' style="width:184px;" />
+                <div class="fileupload fileupload-new" style='margin-top:5px;' data-provides="fileupload">
+	                    <span class="btn default btn-file">
+	                    <span class="fileupload-new"><i class="icon-paper-clip"></i> 浏览</span>
+	                    <span class="fileupload-exists"><i class="icon-undo"></i> 选择</span>
+	                    <input type="file" name='file' class='default' />
+	                    </span>
+                    <span class="fileupload-preview" style="margin-left:5px;"></span>
+                    <a href="javascript:;" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                </div>
+                <small>请选择尺寸比例是640:313的图片</small>
+            </div>
+        </div>
+        <div class='control-group'>
+            <label class='control-label'>连接</label>
+            <div class='controls'>
+                <input type='text' class='span6' name='link' value='{$sign.link}' />
+            </div>
+        </div>
+        <div class='control-group'>
+            <label class='control-label'>排序</label>
+            <div class='controls'>
+                <input type='text' class='span6' name='sort' value='{$sign.sort}' />
+            </div>
+        </div>
+        <div class='control-group'>
+            <div class='controls'>
+                <button name='submit' type='submit' class='btn green'>
+                    <i class='icon-ok'></i>
+                    确定</button>
+                <button type='reset' class='btn'>清空</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+<script type="text/javascript" src="../Public/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../Public/js/bootstrap-fileupload.js"></script>
+<script type='text/javascript' src="../Public/js/xheditor/xheditor-1.2.1.min.js"></script>
+<script type='text/javascript' src='../Public/js/xheditor/xheditor_lang/zh-cn.js'></script>
+<script type="text/javascript" src="../Public/js/jquery.form.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="../Public/DatePicker/WdatePicker.js"></script>
+<script>
+    $(function(){
+        $("#slidefile").uploadify({
+            'swf': '../Public/swf/uploadify.swf',
+            'uploader': '{:U("Public/flashupload")}',
+            'buttonText': '批量上传',
+            'onUploadSuccess': function (file, data, res) {
+                data = eval('(' + data + ')');
+                if (data.state == 1) {
+                    var clone = $(".slide-list li.clone").clone(true).removeClass('clone').show();
+                    clone.find("input").val(data.file);
+                    clone.find("img").attr('src', '__PUBLIC__/upload/' + data.file);
+                    clone.insertBefore($(".slide-list li.clone"));
+                } else {
+                    common.error('文件上传失败,请重试!');
+                    alert('文件上传失败,请重试');
+                }
+            }
+        });
+        $(".slide-list").on('click', '.delSlide', function () {
+            if (!confirm('确认删除该图片?')) {
+                return false;
+            }
+            $(this).parent('li').remove();
+        });
+        $("input[type='file']").change(function(){
+            var _this = $(this);
+            $(this).wrap("<form method='post' id='upfm' action='{:U('Public/ajax_upload')}' enctype='multipart/form-data'></form>");
+            $("#upfm").ajaxSubmit({
+                dataType:'json',
+                success:function(json){
+                    if(json.state==1){
+                        _this.parents('.controls').find("img").attr('src','__PUBLIC__/upload/'+json.file);
+                        _this.parents('.controls').find('input:hidden.imgval').val(json.file);
+                    }
+                    _this.unwrap();
+                },
+                error:function(data){
+                    _this.unwrap();
+                }
+            });
+        });
+
+        $("#content").xheditor({
+            height:'350px',
+            upImgUrl:"{:U('Public/xheupload')}"
+        });
+        $("#fm").submit(function(){
+            if(!validate_frm()) return false;
+            $('.alert-msg').html('<img src="../Public/image/load.gif" />保存中,请稍后...');
+            $('.alert').removeClass('alert-success').removeClass('alert-error').addClass('alert-info').show();
+            $.post($(this).attr('action'),$(this).serialize(),function(data){
+                $("html,body").animate({scrollTop:0},100);
+                $('.alert-msg').html(data.info);
+                $('.alert').removeClass('alert-info').addClass(data.status==1 ? 'alert-success' : 'alert-error').show().delay(8000).fadeOut();
+                if(data.status==1) {
+                    window.location.href="__URL__/index";
+                }
+            },'json');
+            return false;
+        });
+        function validate_frm(){
+            return true;
+        }
+    });
+
+</script>
+</body>
+</html>
