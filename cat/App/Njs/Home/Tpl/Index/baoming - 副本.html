@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../Public/css/css.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+	<script src="../Public/js/jquery.form.js"></script>
+</head>
+<body>
+<div class="cw no" id="jp" onclick="close_jp()">
+	<img alt="" src="../Public/images/06_1_03.png" style="margin-top:30%">
+</div>
+<div class="ww no" id="ww" onclick="close_ww()">
+<img alt="" src="../Public/images/06_03.png" style="margin-top:30%">
+</div>
+	<form action="__URL__/savebao" method="post">
+		<div class="add_div1">
+			<input type="file" id="f1" name="mypic">
+			<input type="file" id="f2" class="no" name="mypic">
+			<input type="file" id="f3" class="no" name="mypic">
+			<input type="file" id="f4" class="no" name="mypic">
+			<input type="hidden" name="img1">
+			<input type="hidden" name="img2">
+			<input type="hidden" name="img3">
+			<input type="hidden" name="img4">
+			<div class="add_div1_div1">
+				<div id="ff1" onclick="a1()"><img src="../Public/images/04_0223_03.png" width="100px;" height="100px;"/></div>
+				<div id="ff2" onclick="a2()"><img src="../Public/images/04_0223_03.png" width="100px;" height="100px;"/></div>
+				<div id="ff3" onclick="a3()"><img src="../Public/images/04_0223_03.png" width="100px;" height="100px;"/></div>
+				<div id="ff4" onclick="a4()"><img src="../Public/images/04_0223_03.png" width="100px;" height="100px;"/></div></div>
+			</div>
+			<div class="add_div2">
+				<input type="text" name="name">
+			</div>
+			<div class="add_div3">
+				<input type="text" name="people">
+			</div>
+			<div class="add_div4">
+				<input type="text" name="phone">
+			</div>
+			<div class="add_div5">
+				<input type="text" name="xy">
+			</div>
+			<div class="add_div6" onclick="savesearch()"></div>
+		</form>
+		<script type="text/javascript">
+			$(function () {
+				var bar = $('.bar');
+				var showimg = $('#showimg');
+				var files = $(".files");
+				var btn = $(".btn span");
+				$("#f1").wrap("<form id='myupload1' action='__URL__/upload_img' method='post' enctype='multipart/form-data'></form>");
+				$("#f2").wrap("<form id='myupload2' action='__URL__/upload_img' method='post' enctype='multipart/form-data'></form>");
+				$("#f3").wrap("<form id='myupload3' action='__URL__/upload_img' method='post' enctype='multipart/form-data'></form>");
+				$("#f4").wrap("<form id='myupload4' action='__URL__/upload_img' method='post' enctype='multipart/form-data'></form>");
+				$("#f1").change(function(){
+					$("#myupload1").ajaxSubmit({
+						dataType:  'json',
+						beforeSend: function() {
+						},
+						uploadProgress: function(event, position, total, percentComplete) {
+						},
+						success: function(data) {
+							var url="__PUBLIC__/upload/"+data.pic;
+							$("#ff1 img").attr("src",url);
+							$("input[name='img1']").val(url);
+						},
+						error:function(xhr){
+							alert("上传失败");
+						}
+					});
+				});
+
+			});
+
+$("#f2").change(function(){
+	$("#myupload2").ajaxSubmit({
+		dataType:  'json',
+		beforeSend: function() {
+		},
+		uploadProgress: function(event, position, total, percentComplete) {
+		},
+		success: function(data) {
+			var url="__PUBLIC__/upload/"+data.pic;
+			$("#ff2 img").attr("src",url);
+			$("input[name='img2']").val(url);
+		},
+		error:function(xhr){
+			alert("上传失败");
+		}
+	});
+});
+
+$("#f3").change(function(){
+	$("#myupload3").ajaxSubmit({
+		dataType:  'json',
+		beforeSend: function() {
+		},
+		uploadProgress: function(event, position, total, percentComplete) {
+		},
+		success: function(data) {
+			var url="__PUBLIC__/upload/"+data.pic;
+			$("#ff3 img").attr("src",url);
+			$("input[name='img3']").val(url);
+		},
+		error:function(xhr){
+			alert("上传失败");
+		}
+	});
+});
+$("#f4").change(function(){
+	$("#myupload4").ajaxSubmit({
+		dataType:  'json',
+		beforeSend: function() {
+		},
+		uploadProgress: function(event, position, total, percentComplete) {
+		},
+		success: function(data) {
+			var url="__PUBLIC__/upload/"+data.pic;
+			$("#ff4 img").attr("src",url);
+			$("input[name='img4']").val(url);
+		},
+		error:function(xhr){
+			alert("上传失败");
+		}
+	});
+});
+
+function a1(){
+	$("#f1").click();
+}
+function a2(){
+	$("#f2").click();
+}
+function a3(){
+	$("#f3").click();
+}
+function a4(){
+	$("#f4").click();
+}
+var url="";
+function savesearch() {
+	var formData = $("form").serialize();
+	$.ajax({
+		type: "POST",
+		url: "__URL__/savebao",
+		data: formData,
+		success: function(msg){
+			if(msg!=0){
+				url="__URL__/getvote?id="+msg;
+				show_ww();
+			}else{
+			   show_jp();
+			}
+			
+		}
+	});
+}
+function show_jp(){
+	$("#jp").show();
+}
+function close_jp(){
+	$("#jp").hide();
+}
+function show_ww(){
+	$("#ww").show();
+}
+function close_ww(){
+	$("#ww").hide();
+	window.location.href=url;
+}
+</script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        wx.config({
+            debug: false,
+            appId: '{$signPackage.appId}',
+            timestamp: "{$signPackage.timestamp}",
+            nonceStr: '{$signPackage.nonceStr}',
+            signature: '{$signPackage.signature}',
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onRecordEnd',
+                'playVoice',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+            ]
+        });
+        wx.ready(function () {
+            var title="拼喵计划";
+            var link="";
+            var imgUrl="http://kdtf.1bz.cc/Public/1.jpg";
+            var desc="拼喵计划";
+            wx.onMenuShareTimeline({
+                title: title, // 分享标题
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareAppMessage({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                type: '', // 分享类型,music.video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareQQ({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareWeibo({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+
+
+
+        });
+    </script>

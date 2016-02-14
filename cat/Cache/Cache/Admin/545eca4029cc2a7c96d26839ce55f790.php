@@ -1,0 +1,128 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html><!--[if IE 8]>
+<html lang="en" class="ie8 no-js"><![endif]--><!--[if IE 9]>
+<html lang="en" class="ie9 no-js"><![endif]--><!--[if !IE]><!-->
+<html lang="en" class="no-js"><!--<![endif]--><!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8"/>
+    <title>亿博智管理平台</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="../Public/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/style-metro.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="../Public/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="../Public/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <link rel="shortcut icon" href="../Public/image/favicon.ico"/>
+</head>
+<!-- END HEAD --><!-- BEGIN BODY -->
+<body class="page-header-fixed page-sidebar-fixed page-footer-fixed" style="overflow:hidden;"><!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse navbar-fixed-top">    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="navbar-inner">
+        <div class="container-fluid">            <!-- BEGIN LOGO --> <a class="brand" href="<?php echo U('Index/index');?>"> <img
+                src="../Public/image/logo.png" alt="logo" style="height:30px;"/> </a>
+            <!--<a href="<?php echo U('Index/index');?>" target='_top' class='btn black'>高级功能</a>            <a href="<?php echo U('Index/basic');?>" target='_blank' class='btn black'>基本功能</a>-->
+            <!-- END LOGO -->            <!-- BEGIN RESPONSIVE MENU TOGGLER --> <a href="javascript:;"
+                                                                                   class="btn-navbar collapsed"
+                                                                                   data-toggle="collapse"
+                                                                                   data-target=".nav-collapse"> <img
+                    src="../Public/image/menu-toggler.png" alt=""/> </a> <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <ul class="nav pull-right">                <!-- BEGIN USER LOGIN DROPDOWN -->
+                <li class="dropdown user"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img alt=""
+                                                                                                           src="../Public/image/avatar1_small.jpg"/>
+                    <span class="username"><?php echo session('login_user.nickname');?></span>
+                    <!-- <i class="icon-angle-down"></i>                    -->                    </a></li>
+                <!-- END USER LOGIN DROPDOWN -->
+                <li><a href='<?php echo U("Index/loginOff");?>'> <i class='icon-off'></i> <span class='title'>退出</span> </a></li>
+            </ul>
+            <!-- END TOP NAVIGATION MENU -->        </div>
+    </div>
+    <!-- END TOP NAVIGATION BAR --></div>
+<!-- END HEADER --><!-- BEGIN CONTAINER -->
+<div class="page-container">    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar nav-collapse collapse">        <!-- BEGIN SIDEBAR MENU -->
+        <ul class="page-sidebar-menu">
+            <li>                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                <div class="sidebar-toggler hidden-phone"></div>
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->            </li>
+            <li class="start active " style="margin-top:40px;"><a href="<?php echo U('Index/set');?>" target="Sydney"> <i
+                    class="icon-home"></i> <span class="title">系统设置</span> <span class="selected"></span> </a></li>
+
+            <!-- <li><a href="<?php echo U('Account/index');?>" target="Sydney"> <i class='icon icon-th-large'></i> <span class='title'>用户管理</span> <span
+                    class='arrow'></span> </a> -->
+            </li>
+            <li><a href="<?php echo U('Cat/index');?>" target="Sydney"> <i class='icon icon-th-large'></i> <span class='title'>参数选手</span><span
+                    class='arrow'></span> </a>
+            </li>
+            <li><a href="<?php echo U('Vote/index');?>" target="Sydney"> <i class='icon icon-th-large'></i> <span class='title'>投票记录</span><span
+                    class='arrow'></span> </a>
+            </li>
+
+            <li><a href='javascript:;'> <i class='icon icon-th-large'></i> <span class='title'>微信公众平台</span> <span
+                    class='arrow'></span> </a>
+                <ul class='sub-menu'>
+                    <li><a href="<?php echo U('Msg/index');?>" target="Sydney"> <i class=" icon-envelope"></i> <span class="title">消息设置</span>
+                    </a></li>
+                    <li><a href="<?php echo U('Menu/index');?>" target="Sydney"> <i class=" icon-envelope"></i> <span
+                            class="title">菜单管理</span>
+                    </a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- END SIDEBAR MENU -->    </div>
+    <!-- END SIDEBAR -->    <!-- BEGIN PAGE -->
+    <div class="page-content">        <!-- BEGIN PAGE CONTAINER-->
+        <div class="container-fluid" style="padding:0px 0px;">
+            <div id="dashboard">
+                <iframe src="<?php echo U('Index/set');?>" frameborder=0 width="100%" height="100%" style="" id="Sydney"
+                        name="Sydney"></iframe>
+            </div>
+        </div>
+        <!-- END PAGE CONTAINER-->    </div>
+    <!-- END PAGE --></div>
+<!-- END CONTAINER --><!-- BEGIN FOOTER -->
+<div class="footer">
+    <div class="footer-inner">1990 - 2014 &copy; 成都亿博智科技有限公司</div>
+</div>
+<!-- END FOOTER --><!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<script src="../Public/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="../Public/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="../Public/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="../Public/js/bootstrap.min.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+<script src="../Public/js/excanvas.min.js"></script>
+<script src="../Public/js/respond.min.js"></script><![endif]-->
+<script src="../Public/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="../Public/js/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../Public/js/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="../Public/js/jquery.uniform.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS --><!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="../Public/js/app.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>    jQuery(document).ready(function () {
+    App.init();
+    $(window).resize(function () {
+        initSize();
+    });
+    initSize();
+    $(".page-sidebar-menu li a[target='Sydney']").click(function () {
+        $(".page-sidebar-menu li").removeClass('active').removeClass('open');
+        $(".page-sidebar-menu li>ul").hide();
+        $(this).parents('li').addClass('active').parent('ul.sub-menu').show();
+    });
+});
+window.initSize = function () {
+    var w_w = $(window).width(), w_h = $(window).height();
+    $("#Sydney").css({width: w_w - 225, height: w_h - $(".header").height() - $(".footer").height()});
+    $(".page-content").css({'min-height': 'auto', height: w_h - $(".header").height() - $(".footer").height()});
+}</script>
+<!-- END JAVASCRIPTS --></body>
+<!-- END BODY --></html>

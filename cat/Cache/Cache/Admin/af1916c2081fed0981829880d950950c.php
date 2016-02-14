@@ -1,0 +1,183 @@
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
+<html lang='zh-CN'>
+<head>
+    <meta charset="utf-8" />
+    <title>t</title>
+    <link href="../Public/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/bootstrap-fileupload.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="../Public/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/uploadify.css" rel="stylesheet" type="text/css"/>
+<style>
+    .slide-list {
+        list-style-type: none;
+        margin-left: 0px;
+    }
+
+    .slide-list li {
+        /*display: inSlide-block;*/
+        display: block;
+        width: 120px;
+        text-align: center;
+        margin-right: 5px;
+        float: left;
+    }
+
+    .slide-list li img {
+        width: 120px;
+        height: 110px;
+        border: 1px solid #ccc;
+        padding: 1px;
+    }
+
+    .slide-list li a {
+        margin-top: 3px;
+    }
+
+</style>
+</head>
+<body style="background-color:#fff !important;margin:20px !important;">
+<div class="page-container row-fluid">
+    <div class='btn-group '>
+        <h3><?php if(($sign["id"]) != ""): ?>编辑<?php else: ?>发表<?php endif; echo ($sign["name"]); ?>的信息</h3>
+    </div>
+    <div class='btn-group' style='float:right;'>
+        <a class='btn black mr10' href='javascript:history.back();'>
+            <i class='icon-arrow-left'></i>
+            返回</a>
+
+    </div>
+    <hr style='margin-top:0px'/>
+    <div class='alert alert-info' style='display:none;'>
+        <button class='close' data-dismiss='alert' onclick='$(this).parent().remove()'></button>
+        <span class='alert-msg'></span>
+    </div>
+
+    <form id='fm' class='form-horizontal' method="post" action="<?php echo U(MODULE_NAME.'/save');?>">
+        <input type="hidden" name="id" value="<?php echo ($sign["id"]); ?>"/>
+        <div class='control-group'>
+            <label class='control-label'>猫名</label>
+            <div class='controls'>
+                <input type='text' class='span6' name='name' value='<?php echo ($sign["name"]); ?>' />
+            </div>
+        </div>
+
+        <div class='control-group'>
+            <label class='control-label'>主人姓名</label>
+            <div class='controls'>
+                <input type='text' class='span6' name='people' value='<?php echo ($sign["people"]); ?>' />
+            </div>
+        </div>
+        <div class='control-group'>
+            <label class="control-label">图片</label>
+
+            <div class="controls">
+                <img src="<?php echo ($sign["img1"]); ?>"/>
+                <img src="<?php echo ($sign["img2"]); ?>"/>
+                <img src="<?php echo ($sign["img3"]); ?>"/>
+                <img src="<?php echo ($sign["img4"]); ?>"/>
+            </div>
+        </div>
+        <div class='control-group'>
+            <label class='control-label'>票数</label>
+            <div class='controls'>
+                <input type='text' class='span6' name='vote' value='<?php echo ($sign["vote"]); ?>' />
+            </div>
+        </div>
+        <div class='control-group'>
+            <div class='controls'>
+                <button name='submit' type='submit' class='btn green'>
+                    <i class='icon-ok'></i>
+                    确定</button>
+                <button type='reset' class='btn'>清空</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+<script type="text/javascript" src="../Public/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../Public/js/common.js"></script>
+<script type="text/javascript" src="../Public/js/bootstrap-fileupload.js"></script>
+<script type='text/javascript' src="../Public/js/xheditor/xheditor-1.2.1.min.js"></script>
+<script type='text/javascript' src='../Public/js/xheditor/xheditor_lang/zh-cn.js'></script>
+<script type="text/javascript" src="../Public/js/jquery.form.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.uniform.min.js"></script>
+<script>
+
+    $(function () {
+        var handleUniform = function () {
+            if (!jQuery().uniform) {
+                return;
+            }
+            var test = $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle, .star)");
+            if (test.size() > 0) {
+                test.each(function () {
+                    if ($(this).parents(".checker").size() == 0) {
+                        $(this).show();
+                        $(this).uniform();
+                    }
+                });
+            }
+        }
+        handleUniform();
+
+        /**
+         * @desc 封面单个上传
+         */
+        $(".sign-upload").change(function () {
+            var _this = $(this);
+            $(this).wrap("<form method='post' id='upfm' action='<?php echo U('Public/ajax_upload');?>' enctype='multipart/form-data'></form>");
+            $("#upfm").ajaxSubmit({
+                dataType: 'json',
+                success: function (json) {
+                    if (json.state == 1) {
+                        _this.parents('.controls').find("img").attr('src', '__PUBLIC__/upload/' + json.file);
+                        _this.parents('.controls').find('input:hidden.imgval').val(json.file);
+                    }
+                    _this.unwrap();
+                },
+                error: function (data) {
+                    _this.unwrap();
+                }
+            });
+        });
+
+        $("#fm").submit(function () {
+            if (!validate_frm()) return false;
+            $('.alert-msg').html('<img src="../Public/image/load.gif" />保存中,请稍后...');
+            $('.alert').removeClass('alert-success').removeClass('alert-error').addClass('alert-info').show();
+            $.post($(this).attr('action'), $(this).serialize(), function (data) {
+                $("html,body").animate({scrollTop: 0}, 100);
+                $('.alert-msg').html(data.info);
+                $('.alert').removeClass('alert-info').addClass(data.status == 1 ? 'alert-success' : 'alert-error').show().delay(8000).fadeOut();
+                if (data.status == 1) {
+                    window.location.href = "__URL__/index";
+                }
+            }, 'json');
+            return false;
+        });
+        function validate_frm() {
+            return true;
+        }
+        $("select[name='category_no']").onChange(changes());
+    });
+
+</script>
+</body>
+</html>

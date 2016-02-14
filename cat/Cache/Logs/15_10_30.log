@@ -1,0 +1,51 @@
+[ 2015-10-30T20:05:21+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002786s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.029837s ]
+ERR: Unknown database 'cat'
+
+[ 2015-10-30T20:06:17+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000645s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000807s ]
+
+[ 2015-10-30T20:06:56+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000840s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001017s ]
+ERR: Unknown database 'cat'
+
+[ 2015-10-30T20:07:05+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000860s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001054s ]
+ERR: Unknown database 'cat'
+
+[ 2015-10-30T20:08:01+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001083s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001352s ]
+ERR: Unknown database 'cat'
+
+[ 2015-10-30T20:08:36+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000897s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001095s ]
+ERR: Unknown database 'cat'
+
+[ 2015-10-30T20:08:57+08:00 ] 127.0.0.1 /index.php?adsf
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000765s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000955s ]
+NOTIC: [8] Undefined index: openid D:\www\Cat\App\Njs\Home\Action\BaseAction.class.php 第 28 行.
+ERR: Unknown database 'cat'
+
+[ 2015-10-30T20:09:15+08:00 ] 127.0.0.1 /index.php/ADSF/fadsf/dd?=dasf
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.007082s ]
+INFO: [ route_check ] --END-- [ RunTime:0.007300s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000857s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001044s ]
+ERR: 无法加载模块:ADSF
+

@@ -1,0 +1,31 @@
+<xml>
+    <ToUserName><![CDATA[{$info.from}]]></ToUserName>
+    <FromUserName><![CDATA[{$info.to}]]></FromUserName>
+    <CreateTime>{$info.time}</CreateTime>
+    <MsgType><![CDATA[news]]></MsgType>
+    <ArticleCount>{$info.msg|count}</ArticleCount>
+    <Articles>
+        <volist name="info.msg" id="vo">
+            <item>
+                <?php
+                    $url = $vo['url'];
+                    //$url = stripslashes($url);
+                    //$url = addQuery($url,array('openid'=>$info['from']));
+                    //$url = str_replace(':openid:',$info['from'],$url);
+                    $img = stripos($vo['img'],'http://')===0 ? $vo['img'] : 'http://'.$_SERVER['HTTP_HOST'].__ROOT__.'/Public/upload/'.$vo['img'];
+
+                    if(strpos($vo['img'],'http://')===0){
+                        //$img = $vo['img'];
+                    }else{
+                        //$img = 'http://'.$_SERVER['HTTP_HOST'].__ROOT__.'/Public/upload/'.$vo['img'];
+                    }
+
+                ?>
+                <Title><![CDATA[{$vo.title}]]></Title>
+                <Description><![CDATA[{$vo.desc}]]></Description>
+                <PicUrl><![CDATA[{$img}]]></PicUrl>
+                <Url><![CDATA[{$url}]]></Url>
+            </item>
+        </volist>
+    </Articles>
+</xml>

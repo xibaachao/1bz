@@ -1,0 +1,127 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2015/3/19 0019
+ * Time: 下午 5:48
+ */
+class IndexAction extends BaseAction {
+	// 这个是显示的方法
+	function index() {
+		if($_GET["zr"]!=null)
+		{
+			$this->assign("list",D("cat")->order("vote desc")->select());
+			$this->assign("zr",1);
+		}else
+		{
+			$this->assign("list",D("cat")->order("id desc")->select());
+		}
+		
+
+		$this->display ( "index" );
+	}
+	// 这个是报名的页面
+	function baoming() {
+		$user = cookie ( 'USER_INFO' );
+		
+		$one=D("cat")->where(array("openid"=>$user["openid"]))->find();
+		if($one["id"]!=null || $one["id"]>0)
+		{
+			$this->redirect("vote?id=".$one["id"]);
+		}
+		$this->display ();
+	}
+	// 这个是报名的方法
+	function savebao() {
+		$user = cookie ( 'USER_INFO' );
+		$_POST ["openid"] = $user ["openid"];
+		$_POST["time"]=date("Y-m-d H:i:s");
+		import('ORG.Net.UploadFile');
+		$upload = new UploadFile();// 实例化上传类
+		$upload->maxSize  = 31457280 ;// 设置附件上传大小
+		$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+		$upload->savePath =  './Public/Upload/';// 设置附件上传目录
+		if(!$upload->upload()) {// 上传错误提示错误信息
+		$this->error($upload->getErrorMsg());
+		 }else{// 上传成功 获取上传文件信息
+			$info =  $upload->getUploadFileInfo();
+		 }
+		 $_POST["img1"]=__PUBLIC__.'/Upload/'.$info[0]['savename'];
+		 $_POST["img2"]=__PUBLIC__.'/Upload/'.$info[1]['savename'];
+		 $_POST["img3"]=__PUBLIC__.'/Upload/'.$info[2]['savename'];
+		 $_POST["img4"]=__PUBLIC__.'/Upload/'.$info[3]['savename'];
+		$one=D("Cat")->add($_POST);
+		if($one){
+			$this->assign("one",$one);
+			$this->display("baosuccess");
+		}else{
+			$this->display("baoerro");
+		}
+}
+	// 这个是投票的页面
+function getvote() {
+	$one = D ("cat" )->where ( array (
+		"id" => $_GET ["id"],
+		"is_show" => 1 
+		) )->find ();
+	$this->assign("one",$one);
+	$this->display();
+}
+	//这个是投票的方法
+function vote(){
+	$user = cookie ( 'USER_INFO' );
+// 		判断是否投过了
+		$begin_day = date("Y-m-d 00:00:00");//开始时间
+		$end_day = date("Y-m-d H:i:s");//现在的时间
+		$where["openid"]=$user["openid"];
+		$where["time"]=array('between',array($begin_day,$end_day));
+		$one=D("vote")->where($where)->find();
+		if($one!=null)
+		{
+// 			表示投票过了的
+			echo 0;
+		}else{
+			$_POST["name"]=$user["nickname"];
+			$_POST["openid"]=$user["openid"];
+			$_POST["time"]=date("Y-m-d H:i:s");
+			$temp=D("vote")->add($_POST);
+			D("cat")->where(array("id"=>$_POST["cat_id"]))->setInc("vote");
+			
+			if(!$temp)
+			{
+// 				表示投票失败
+				echo D()->getLastSql();
+			}
+			echo 1;
+		}
+	}
+	//    上传图片的方法
+	public function upload_img()
+	{
+		$picname = $_FILES['mypic']['name'];
+		$picsize = $_FILES['mypic']['size'];
+		if ($picname != "") {
+			if ($picsize > 10024000) {
+				echo '图片大小不能超过10M';
+				exit;
+			}
+			$type = strstr($picname, '.');
+			if ($type != ".gif" && $type != ".jpg" && $type != ".png" && $type != ".jpeg") {
+				echo '图片格式不对！';
+				exit;
+			}
+			$rand = rand(100, 999);
+			$pics = date("YmdHis") . $rand . $type;
+            //上传路径
+			$pic_path = "./Public/upload/" . $pics;
+			move_uploaded_file($_FILES['mypic']['tmp_name'], $pic_path);
+		}
+		$size = round($picsize / 1024, 2);
+		$arr = array(
+			'name' => $picname,
+			'pic' => $pics,
+			'size' => $size
+			);
+		echo json_encode($arr);
+	}
+}

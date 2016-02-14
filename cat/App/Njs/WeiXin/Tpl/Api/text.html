@@ -1,0 +1,17 @@
+<?php
+	//stripslashes
+	$msg = $info['msg'];
+	//$msg = str_replace(':openid:',$info['from'],$msg);
+	$msg = htmlspecialchars_decode($msg);
+	$str = $msg;
+	//去掉反斜杠
+	$msg = stripslashes($msg);
+	$msg = strAddQuery($msg,array('openid'=>$info['from']));
+?>
+<xml>
+    <ToUserName><![CDATA[{$info.from}]]></ToUserName>
+    <FromUserName><![CDATA[{$info.to}]]></FromUserName>
+    <CreateTime>{$info.time}</CreateTime>
+    <MsgType><![CDATA[text]]></MsgType>
+    <Content><![CDATA[{$msg}]]></Content>
+</xml>

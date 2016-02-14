@@ -70,16 +70,22 @@
     <form id='fm' class='form-horizontal' method="post" action="<?php echo U(MODULE_NAME.'/save');?>">
         <input type="hidden" name="id" value="<?php echo ($sign["id"]); ?>"/>
         <div class='control-group'>
-            <label class='control-label'>猫名</label>
+            <label class='control-label'>商品名称</label>
             <div class='controls'>
                 <input type='text' class='span6' name='name' value='<?php echo ($sign["name"]); ?>' />
             </div>
         </div>
 
         <div class='control-group'>
-            <label class='control-label'>主人姓名</label>
+            <label class='control-label'>商品机率</label>
             <div class='controls'>
                 <input type='text' class='span6' name='people' value='<?php echo ($sign["people"]); ?>' />
+            </div>
+        </div>
+        <div class='control-group'>
+            <label class='control-label'>商品数量</label>
+            <div class='controls'>
+                <input type='text' class='span6' name='vote' value='<?php echo ($sign["vote"]); ?>' />
             </div>
         </div>
         <div class='control-group'>
@@ -87,17 +93,10 @@
 
             <div class="controls">
                 <img src="<?php echo ($sign["img1"]); ?>"/>
-                <img src="<?php echo ($sign["img2"]); ?>"/>
-                <img src="<?php echo ($sign["img3"]); ?>"/>
-                <img src="<?php echo ($sign["img4"]); ?>"/>
+
             </div>
         </div>
-        <div class='control-group'>
-            <label class='control-label'>票数</label>
-            <div class='controls'>
-                <input type='text' class='span6' name='vote' value='<?php echo ($sign["vote"]); ?>' />
-            </div>
-        </div>
+
         <div class='control-group'>
             <div class='controls'>
                 <button name='submit' type='submit' class='btn green'>

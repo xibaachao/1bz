@@ -1,0 +1,48 @@
+*{margin: 0px; padding: 0px;font-family: "微软雅黑"}
+a{border: 0px; text-decoration: none;}
+.no{display: none;}
+body{background: #edf6f1}
+h5{color: #acadac}
+.ww{width: 100%;height: 100%;background:#000; filter: alpha(opacity=90); opacity: 0.9; position: absolute;z-index: 999;text-align: center;}
+.jp{width: 100%;height: 100%;background:#000; filter: alpha(opacity=90); opacity: 0.9; position: absolute;z-index: 999;text-align: center;}
+.jp img{width: 90%; margin-top: 20px;}
+.ww img{width: 90%; margin-top:20px;}
+.ww a{display: block;position:relative;left: 0px; top: -9%;width:40%; float: left; height: 5%;z-index: 9999; margin-left: 20px;}
+.jp a{display: block;position:relative;left: 0px; top: -9%;width:40%; float: left; height: 5%;z-index: 9999; margin-left: 20px;}
+
+.jp div{width: 88%; margin: 0px auto;}
+.jp div h4{text-align: center; padding-top:20px;}
+.jp div p{text-align: left;line-height: 25px; width: 90%;padding-left: 10px}
+
+
+/***首页***/
+.index_div1{width: 100%;height: 40%;background: url("../images/01_01.png"); background-size: 100% 100%; position: absolute;}
+.index_div1 a{margin-top: 40%;display: block;float: left; margin-left: 20px;}
+.content{width: 95%;margin: 0px auto;height: auto;clear:both;position: absolute;top:37%;padding-left: 4%;}
+.content div a img{margin-left:11%}
+.footer{width: 100%; height: 10%;position: fixed;bottom: 0px;z-index: 9}
+.lf{width: 50%;height: 100%;float: left; background: url("../images/01_02.gif"); background-size: 100% 100%}
+.lr{width: 50%;height: 100%;float: left;background: url("../images/01_03.gif"); background-size: 100% 100%}
+
+
+
+
+/***这个是投票页面的****/
+.vote_div1{width: 100%;height: 40%;background: url("../images/07_01.gif"); background-size: 100% 100%; position: absolute;}
+.vote_div1 img{float: right;width: 30px; margin-right: 20px;z-index: 9999;position: absolute; right: 15px;}
+.vote_img{width: 90%;margin: 0 auto; padding-top: 50px; text-align: center; margin-bottom: 20%}
+.vote_img h4{text-align: center; margin: 10px;}
+.vote_img h5{text-align: center;margin: 5px;}
+/***这个是添加图片的***/
+.add_div1{width: 100%;background: url("../images/04_01.png"); background-size: 100% 100%; position: absolute; min-height:300px;}
+.add_div1_div1{width: 90%; margin: 10%; margin-left: 15%}
+.add_div1_div1 div{float: left; margin-left: 20px;}
+.add_div2{width:90%; height: 30px; background: url("../images/04_04.png");background-size: 100% 100%; position: absolute;top:50%;left: 5%}
+.add_div3{width:90%; height: 30px; background: url("../images/04_07.png");background-size: 100% 100%; position: absolute;top:57%;left: 5%}
+.add_div4{width:90%; height: 30px; background: url("../images/04_09.png");background-size: 100% 100%; position: absolute;top:64%;left: 5%}
+.add_div5{width:90%; height: 30px; background: url("../images/04_11.png");background-size: 100% 100%; position: absolute;top:72%;left: 5%}
+.add_div6{width: 100px;height: 100px; background: url("../images/04_14.png");background-size: 100% 100%;position: fixed;bottom:0%;z-index: 99;left: 35% }
+.add_div2 input{position: relative;top:11%; left: 33%;width: 64%;height: 77%;border: 0px}
+.add_div3 input{position: relative;top:11%; left: 33%;width: 64%;height: 77%;border: 0px}
+.add_div4 input{position: relative;top:11%; left: 33%;width: 64%;height: 77%;border: 0px}
+.add_div5 input{position: relative;top:11%; left: 33%;width: 64%;height: 77%;border: 0px}

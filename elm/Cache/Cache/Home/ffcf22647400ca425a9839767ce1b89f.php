@@ -1,0 +1,48 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>标题</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=''/>
+	<link rel="stylesheet" type="text/css" href="../Public/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../Public/css/animate.min.css">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<style type="text/css">
+		#t{
+			-webkit-animation-duration: 6s;
+			-webkit-animation-delay: 1s;
+			-webkit-animation-iteration-count: infinite;
+		}
+		#t1{
+			-webkit-animation-duration: 2s;
+			-webkit-animation-delay: 1s;
+			-webkit-animation-iteration-count: 1;
+		}
+		#t2{
+			-webkit-animation-duration: 2s;
+			-webkit-animation-delay: 1s;
+			-webkit-animation-iteration-count: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="f7">
+		<div>
+			<img src="../Public/images/eleme-6_01.png" width="100%" class="animated shake" id="t">
+		</div>
+		<div style="position: absolute;top:0px;width:100%">
+			<img src="../Public/images/eleme-3_02.png" style="float:right" width="40%" class="animated fadeInUp" id="t1">
+		</div>
+		<div>
+			<img src="../Public/images/eleme-6_03.png" width="100%" class="animated pulse" id="t2">
+		</div>
+		<div style="position: absolute;bottom:0px;">
+			<img src="../Public/images/eleme-6_05.png" width="100%">
+			<a href="__URL__/f7" style="display:block;width:33%; height:100%;position: absolute;top:0px;"></a>
+			<a href="__URL__/f7" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:33%"></a>
+			<a href="__URL__/f7" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:66%"></a>
+		</div>
+	</div>
+</body>
+</html>

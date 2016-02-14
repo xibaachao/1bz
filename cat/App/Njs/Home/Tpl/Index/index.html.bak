@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>拼猫计划</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link href="../Public/css/css.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../Public/css/component.css" />
+<script src="../Public/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+<div class="index_div1">
+	<a href="javascript:show_jp()" style="margin-left:25%"></a>
+	<a href="javascript:show_ww()"></a>
+</div>
+<div class="content">
+	<div style="margin-top:30px;">
+		<empty name="zr">
+            <a href="__URL__/index"><img src="../Public/images/01_03.png" width="50"></a>
+            <a href="__URL__/index?zr=1"><img src="../Public/images/01_05.png" width="50"></a>
+            <else/>
+            <a href="__URL__/index"><img src="../Public/images/01_03_1.png" width="50"></a>
+            <a href="__URL__/index?zr=1"><img src="../Public/images/01_05_1.png" width="50"></a>
+        </empty>
+		<a href="__URL__/baoming"><img src="../Public/images/01_07.png" width="50"></a>
+	</div>
+	<ul class="grid effect-1" id="grid">
+		<volist name="list" id="vo">
+			<li><a href="__URL__/getvote?id={$vo.id}"><img src="{$vo.img1}"></a>
+				<h5>{$vo.name}</h5>
+				<img src="../Public/images/07_08.png" width="60px;">
+			</li>
+		</volist>
+        <br>
+        <br>
+         <br>
+        <br>
+         <br>
+        <br>
+	</ul>
+         <br>
+         <br>
+         <br>
+</div>
+<div class="jp no" id="jp" onclick="close_jp()">
+	<img alt="" src="../Public/images/02_03.png">
+</div>
+<div class="ww no" id="ww" onclick="close_ww()">
+<img alt="" src="../Public/images/03_03.png">
+</div>
+<script src="../Public/js/masonry.pkgd.min.js"></script>
+<script src="../Public/js/imagesloaded.js"></script>
+<script src="../Public/js/classie.js"></script>
+<script src="../Public/js/AnimOnScroll.js"></script>
+<script type="text/javascript">
+new AnimOnScroll( document.getElementById( 'grid' ), {
+	minDuration : 0.4,
+	maxDuration : 0.7,
+	viewportFactor : 0.2
+} );
+function show_jp(){
+	$("#jp").show();
+}
+function close_jp(){
+	$("#jp").hide();
+}
+function show_ww(){
+	$("#ww").show();
+}
+function close_ww(){
+	$("#ww").hide();
+}
+
+
+
+</script>
+<include file="Home/footer"/>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        wx.config({
+            debug: false,
+            appId: '{$signPackage.appId}',
+            timestamp: "{$signPackage.timestamp}",
+            nonceStr: '{$signPackage.nonceStr}',
+            signature: '{$signPackage.signature}',
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onRecordEnd',
+                'playVoice',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+            ]
+        });
+        wx.ready(function () {
+            var title="拼喵计划";
+            var link="http://mjhd.1bz.cc/index.php";
+            var imgUrl="http://mjhd.1bz.cc/Public/1.jpg";
+            var desc="拼喵计划";
+            wx.onMenuShareTimeline({
+                title: title, // 分享标题
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareAppMessage({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                type: '', // 分享类型,music.video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareQQ({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareWeibo({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+
+
+
+        });
+    </script>
