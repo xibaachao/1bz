@@ -46,15 +46,22 @@
 			-webkit-align-items: center;
 			align-items: center;
 		}
+		.swiper-slide a{display: block;width: 50%; height: 30%;}
 	</style>
 </head>
 <body>
 <!-- Swiper -->
 <div class="swiper-container">
 	<div class="swiper-wrapper">
-		<div class="swiper-slide" style="background: url('../Public/images/3.gif');background-size: 100% 100%"></div>
-		<div class="swiper-slide" style="background: url('../Public/images/4.gif');background-size: 100% 100%"></div>
-		<div class="swiper-slide" style="background: url('../Public/images/5.gif');background-size: 100% 100%"></div>
+		<div class="swiper-slide" style="background: url('../Public/images/3.gif');background-size: 100% 100%">
+			<a href="__URL__/f4"></a>
+		</div>
+		<div class="swiper-slide" style="background: url('../Public/images/4.gif');background-size: 100% 100%">
+			<a href="__URL__/f5"></a>
+		</div>
+		<div class="swiper-slide" style="background: url('../Public/images/5.gif');background-size: 100% 100%">
+			<a href="__URL__/f6"></a>
+		</div>
 	</div>
 	<!-- Add Pagination -->
 	<div class="swiper-pagination"></div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 </style>
 <body >
 <div class="f6">
-    <div class="temp"><a href="__URL__/f7"></a><a href="__URL__/f7"></a><a href="__URL__/f7"></a></div>
+    <div class="temp"><a href=""></a><a></a><a href=""></a> </div>
 </div>
 </body>
 <script type="text/javascript" src="../Public/js/zepto.min.js"></script>

@@ -31,4 +31,12 @@ class IndexAction extends Action {
 	function f6(){
 		$this->display();
 	}
+	//获取商品
+	function f7(){
+		$this->display();
+	}
+	//领取页面
+	function f8(){
+		$this->display();
+	}
 }
