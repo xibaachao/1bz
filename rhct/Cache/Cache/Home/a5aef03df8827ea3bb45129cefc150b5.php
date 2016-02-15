@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>舌尖上的中国记忆</title>
+	<title>春季化妆品节</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<style type="text/css">
 		*{margin: 0px; padding: 0px;}
@@ -18,7 +18,6 @@
 </div>
 	<iframe src="__URL__/music"/></iframe>
 </body>
-
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
         wx.config({
@@ -65,12 +64,12 @@
             ]
         });
         wx.ready(function () {
-            var title="舌尖上的中国记忆";
+            var title="春季化妆品节";
             var link="http://z-jc.cn/index.php";
             var imgUrl="http://z-jc.cn/1.jpg";
-            var desc="舌尖上的中国记忆，味道浓时是故乡，返乡新年餐券大赠送。";
+            var desc="春季化妆品节。";
             wx.onMenuShareTimeline({
-                title: "舌尖上的中国记忆，味道浓时是故乡，返乡新年餐券大赠送。", // 分享标题
+                title: "春季化妆品节", // 分享标题
                 link: link, // 分享链接
                 imgUrl: imgUrl, // 分享图标
                 success: function () {

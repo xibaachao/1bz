@@ -13,5 +13,11 @@ class IndexAction extends Action {
 	function f1(){
 	    $this->display();
 	}
+	function f2(){
+		$this->display();
+	}
+	function f3(){
+		$this->display();
+	}
 
 }
