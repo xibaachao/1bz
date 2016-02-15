@@ -19,5 +19,16 @@ class IndexAction extends Action {
 	function f3(){
 		$this->display();
 	}
-
+	//第一个宝箱
+	function f4(){
+		$this->display();
+	}
+	//第二个宝箱
+	function f5(){
+		$this->display();
+	}
+	//第三个宝箱
+	function f6(){
+		$this->display();
+	}
 }

@@ -16,7 +16,7 @@
 			animate-delay: 2s;    //动画延迟时间
 			animate-iteration-count: 1;    //动画执行次数
 		}
-		.div3{margin-top: 100%}
+		.div3{margin-top: 80%}
 		.div3 img{width: 100%}
 	</style>
 </head>
