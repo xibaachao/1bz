@@ -72,28 +72,49 @@
         <div class='control-group'>
             <label class='control-label'>商品名称</label>
             <div class='controls'>
-                <input type='text' class='span6' name='name' value='{$sign.name}' />
+                <input type='text' class='span6' name='title' value='{$sign.title}' />
             </div>
         </div>
 
         <div class='control-group'>
             <label class='control-label'>商品机率</label>
             <div class='controls'>
-                <input type='text' class='span6' name='people' value='{$sign.people}' />
+                <input type='text' class='span6' name='jl' value='{$sign.jl}' />
             </div>
         </div>
         <div class='control-group'>
             <label class='control-label'>商品数量</label>
             <div class='controls'>
-                <input type='text' class='span6' name='vote' value='{$sign.vote}' />
+                <input type='text' class='span6' name='no' value='{$sign.no}' />
+            </div>
+        </div>
+        <div class='control-group'>
+            <label class='control-label'>请选择商店</label>
+            <div class='controls'>
+                {~$alltype=C("types")}
+                <select name="type">
+                    <volist name="alltype" id="vo">
+                        <option value="{$key}" <eq name="sign.type" value="$key">selected=selected</eq>  >{$vo}</option>
+                    </volist>
+                </select>
             </div>
         </div>
         <div class='control-group'>
             <label class="control-label">图片</label>
-
             <div class="controls">
-                <img src="{$sign.img1}"/>
-
+                <input type="hidden" name="img" class="imgval" value="{$sign.img|default='nopic.jpg'}"/>
+                <img src="__PUBLIC__/upload/{$sign.img|default='nopic.jpg'}" style="width:140px;"/>
+                <div class="fileupload fileupload-new" style='margin-top:5px;' data-provides="fileupload">
+	                    <span class="btn default btn-file">
+	                    <span class="fileupload-new"><i class="icon-paper-clip"></i> 浏览</span>
+	                    <span class="fileupload-exists"><i class="icon-undo"></i> 选择</span>
+	                    <input type="file" name='file' class='default sign-upload'/>
+	                    </span>
+                    <span class="fileupload-preview" style="margin-left:5px;"></span>
+                    <a href="javascript:;" class="close fileupload-exists" data-dismiss="fileupload"
+                       style="float: none; margin-left:5px;"></a>
+                </div>
+                <small>请选择尺寸****左右的图片</small>
             </div>
         </div>
 

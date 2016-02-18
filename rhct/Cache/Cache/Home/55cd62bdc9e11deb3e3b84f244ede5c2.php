@@ -26,13 +26,13 @@
 			<img src="../Public/images/2_031.png" style="width: 30%"/>
 		</div>
 		<div class="div1">
-			<a href="__URL__/f3"><img src="../Public/images/2_02.png"></a>
+			<a href="__URL__/f3?type=0"><img src="../Public/images/2_02.png"></a>
 		</div>
 		<div class="div1">
-			<a href="__URL__/f3"><img src="../Public/images/2_03.png"></a>
+			<a href="__URL__/f3?type=1"><img src="../Public/images/2_03.png"></a>
 		</div>
 		<div class="div1">
-			<a href="__URL__/f3"><img src="../Public/images/2_06.png"></a>
+			<a href="#"><img src="../Public/images/2_06.png"></a>
 		</div>
 	</div>
 </body>

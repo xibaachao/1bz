@@ -72,28 +72,47 @@
         <div class='control-group'>
             <label class='control-label'>商品名称</label>
             <div class='controls'>
-                <input type='text' class='span6' name='name' value='<?php echo ($sign["name"]); ?>' />
+                <input type='text' class='span6' name='title' value='<?php echo ($sign["title"]); ?>' />
             </div>
         </div>
 
         <div class='control-group'>
             <label class='control-label'>商品机率</label>
             <div class='controls'>
-                <input type='text' class='span6' name='people' value='<?php echo ($sign["people"]); ?>' />
+                <input type='text' class='span6' name='jl' value='<?php echo ($sign["jl"]); ?>' />
             </div>
         </div>
         <div class='control-group'>
             <label class='control-label'>商品数量</label>
             <div class='controls'>
-                <input type='text' class='span6' name='vote' value='<?php echo ($sign["vote"]); ?>' />
+                <input type='text' class='span6' name='no' value='<?php echo ($sign["no"]); ?>' />
+            </div>
+        </div>
+        <div class='control-group'>
+            <label class='control-label'>请选择商店</label>
+            <div class='controls'>
+                <?php $alltype=C("types");?>
+                <select name="type">
+                    <?php if(is_array($alltype)): $i = 0; $__LIST__ = $alltype;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($key); ?>" <?php if(($sign["type"]) == $key): ?>selected=selected<?php endif; ?>  ><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                </select>
             </div>
         </div>
         <div class='control-group'>
             <label class="control-label">图片</label>
-
             <div class="controls">
-                <img src="<?php echo ($sign["img1"]); ?>"/>
-
+                <input type="hidden" name="img" class="imgval" value="<?php echo (($sign["img"])?($sign["img"]):'nopic.jpg'); ?>"/>
+                <img src="__PUBLIC__/upload/<?php echo (($sign["img"])?($sign["img"]):'nopic.jpg'); ?>" style="width:140px;"/>
+                <div class="fileupload fileupload-new" style='margin-top:5px;' data-provides="fileupload">
+	                    <span class="btn default btn-file">
+	                    <span class="fileupload-new"><i class="icon-paper-clip"></i> 浏览</span>
+	                    <span class="fileupload-exists"><i class="icon-undo"></i> 选择</span>
+	                    <input type="file" name='file' class='default sign-upload'/>
+	                    </span>
+                    <span class="fileupload-preview" style="margin-left:5px;"></span>
+                    <a href="javascript:;" class="close fileupload-exists" data-dismiss="fileupload"
+                       style="float: none; margin-left:5px;"></a>
+                </div>
+                <small>请选择尺寸****左右的图片</small>
             </div>
         </div>
 

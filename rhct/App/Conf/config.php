@@ -9,5 +9,6 @@ return array(
     'DEFAULT_GROUP' => 'Home',
     'TOKEN_ON' => false,
     'SHOW_PAGE_TRACE' => false,
+    "types"=>array("人东店","光华店")
 );
  

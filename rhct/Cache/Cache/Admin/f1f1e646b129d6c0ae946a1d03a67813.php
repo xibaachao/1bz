@@ -62,10 +62,10 @@
     <tr>
         <th><label class="checkbox"> <input type="checkbox"/>
         </label></th>
-        <th>序号</th>
         <th>商品名称</th>
         <th>商品几率</th>
         <th>商品数量</th>
+        <th>所属商店</th>
         <th>操作</th>
     </tr>
     </thead>
@@ -77,7 +77,7 @@
             <td><?php echo ($vo["title"]); ?></td>
             <td><?php echo ($vo["jl"]); ?></td>
             <td><?php echo ($vo["no"]); ?></td>
-            <td><?php echo ($vo["time"]); ?></td>
+            <td><?php if(($vo["type"]) == "0"): ?>人东店<?php endif; if(($vo["type"]) == "1"): ?>光华店<?php endif; ?></td>
             <td>
                 <a href='<?php echo U(MODULE_NAME."/edit",array("id"=>$vo["id"]));?>' class='btn default btn-xs'>
                     <i class='icon-edit'></i>

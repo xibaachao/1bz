@@ -62,10 +62,10 @@
     <tr>
         <th><label class="checkbox"> <input type="checkbox"/>
         </label></th>
-        <th>序号</th>
         <th>商品名称</th>
         <th>商品几率</th>
         <th>商品数量</th>
+        <th>所属商店</th>
         <th>操作</th>
     </tr>
     </thead>
@@ -78,7 +78,7 @@
             <td>{$vo.title}</td>
             <td>{$vo.jl}</td>
             <td>{$vo.no}</td>
-            <td>{$vo.time}</td>
+            <td><eq name="vo.type" value="0">人东店</eq><eq name="vo.type" value="1">光华店</eq></td>
             <td>
                 <a href='{:U(MODULE_NAME."/edit",array("id"=>$vo["id"]))}' class='btn default btn-xs'>
                     <i class='icon-edit'></i>

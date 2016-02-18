@@ -10,12 +10,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 </head>
 <style>
-    .temp{margin-top: 122%; height: 10%; width: 100%;}
+    .temp{margin-top: 110%; height: 10%; width: 100%;}
     .temp a{display: block;width: 33%; height: 100%;float: left}
 </style>
 <body >
 <div class="f6">
-    <div class="temp"><a href=""></a><a></a><a href=""></a> </div>
+    <div class="temp"><a href="__URL__/f7"></a><a href="__URL__/f7"></a><a href="__URL__/f7"></a></div>
 </div>
 </body>
 <script type="text/javascript" src="../Public/js/zepto.min.js"></script>
