@@ -22,11 +22,17 @@
 		<div class="div1">
 			<img id="div1" class="animated rotateIn" src="../Public/images/2_01.png">
 		</div>
+		<div class="div1" style="text-align: center">
+			<img src="../Public/images/2_031.png" style="width: 30%"/>
+		</div>
 		<div class="div1">
 			<a href="__URL__/f3"><img src="../Public/images/2_02.png"></a>
 		</div>
 		<div class="div1">
 			<a href="__URL__/f3"><img src="../Public/images/2_03.png"></a>
+		</div>
+		<div class="div1">
+			<a href="__URL__/f3"><img src="../Public/images/2_06.png"></a>
 		</div>
 	</div>
 </body>

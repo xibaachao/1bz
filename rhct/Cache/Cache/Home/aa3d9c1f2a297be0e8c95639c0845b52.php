@@ -1,54 +1,81 @@
 <?php if (!defined('THINK_PATH')) exit();?>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Hello MUI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta charset="utf-8">
+	<title>Swiper demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-    <!--标准mui.css-->
-    <link rel="stylesheet" href="../Public/mui/css/mui.min.css">
-    <!--App自定义的css-->
-    <link rel="stylesheet" type="text/css" href="../Public/mui/css/app.css"/>
+	<!-- Link Swiper's CSS -->
+	<link rel="stylesheet" href="../Public/css/swiper.min.css">
+
+	<!-- Demo styles -->
+	<style>
+		html, body {
+			position: relative;
+			height: 100%;
+		}
+		body {
+			background: #eee;
+			font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			color:#000;
+			margin: 0;
+			padding: 0;
+		}
+		.swiper-container {
+			width: 100%;
+			height: 100%;
+		}
+		.swiper-slide {
+			text-align: center;
+			font-size: 18px;
+			background: #fff;
+
+			/* Center slide text vertically */
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+		}
+		.swiper-slide a{display: block;width: 50%; height: 30%;}
+	</style>
 </head>
 <body>
-<div id="slider" class="mui-slider" style="width: 100%; height: 100%" >
-    <div class="mui-slider-group mui-slider-loop">
-        <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-        <div class="mui-slider-item">
-            <a href="#">
-                <img src="http://i11.tietuku.com/1a7f66bd0129c653.gif" width="100%" height="100%">
-            </a>
-        </div>
-        <!-- 第一张 -->
-        <div class="mui-slider-item">
-            <a href="#">
-                <img src="http://i11.tietuku.com/1a7f66bd0129c653.gif" width="100%" height="100%">
-            </a>
-        </div>
-        <!-- 第二张 -->
-        <div class="mui-slider-item">
-            <a href="#">
-                <img src="http://i11.tietuku.com/1a7f66bd0129c653.gif" width="100%" height="100%">
-            </a>
-        </div>
-    </div>
-    <div class="mui-slider-indicator">
-        <div class="mui-indicator mui-active"></div>
-        <div class="mui-indicator"></div>
-        <div class="mui-indicator"></div>
-        <div class="mui-indicator"></div>
-    </div>
+<!-- Swiper -->
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide" style="background: url('../Public/images/3.jpg');background-size: 100% 100%">
+			<a href="__URL__/f4"></a>
+		</div>
+		<div class="swiper-slide" style="background: url('../Public/images/4.jpg');background-size: 100% 100%">
+			<a href="__URL__/f5"></a>
+		</div>
+		<div class="swiper-slide" style="background: url('../Public/images/5.jpg');background-size: 100% 100%">
+			<a href="__URL__/f6"></a>
+		</div>
+	</div>
+	<!-- Add Pagination -->
+	<div class="swiper-pagination"></div>
 </div>
-<script src="../Public/mui/js/mui.min.js"></script>
-<script type="text/javascript" charset="utf-8">
-    mui.init({
-        swipeBack:true //启用右滑关闭功能
-    });
+
+<!-- Swiper JS -->
+<script src="../Public/js/swiper.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+	var swiper = new Swiper('.swiper-container', {
+		pagination: '.swiper-pagination',
+		paginationClickable: true
+	});
 </script>
 </body>
-
 </html>
