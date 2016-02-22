@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<title>Swiper demo</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-
+	<link rel="stylesheet" type="text/css" href="../Public/css/animate.min.css">
 	<!-- Link Swiper's CSS -->
 	<link rel="stylesheet" href="../Public/css/swiper.min.css">
 
@@ -14,6 +14,7 @@
 		html, body {
 			position: relative;
 			height: 100%;
+			width: 100%;
 		}
 		body {
 			background: #eee;
@@ -31,7 +32,6 @@
 			text-align: center;
 			font-size: 18px;
 			background: #fff;
-
 			/* Center slide text vertically */
 			display: -webkit-box;
 			display: -ms-flexbox;
@@ -46,36 +46,79 @@
 			-webkit-align-items: center;
 			align-items: center;
 		}
-		.swiper-slide a{display: block;width: 50%; height: 30%;}
-	</style>
+		.swiper-slide a{display: block;width: 40%; height: 30%;z-index: 200; margin-left: 3%;margin-top: 15%}
+		.swiper-slide a img{width: 100%}
+		#xx1{
+			-webkit-animation-duration: 2s;
+			-webkit-animation-delay: 1s;
+			-webkit-animation-iteration-count:infinite;
+		}
+		#xx2{
+			-webkit-animation-duration: 2s;
+			-webkit-animation-delay: 1s;
+			-webkit-animation-iteration-count:infinite;
+		}
+		#xx3{
+			-webkit-animation-duration: 2s;
+			-webkit-animation-delay: 1s;
+			-webkit-animation-iteration-count:infinite;
+		}
+		.flash{
+			-webkit-animation-duration: 2s;
+			-webkit-animation-delay: 2s;
+			-webkit-animation-iteration-count:infinite;
+		}
+	</style> 
 </head>
-<body>
+<body style="width: 100%; height: 100%;">
 <!-- Swiper -->
+<div style="width: 100%;height: 100%;position: absolute;">
 <div class="swiper-container">
 	<div class="swiper-wrapper">
 		<div class="swiper-slide" style="background: url('../Public/images/3.jpg');background-size: 100% 100%">
-			<a href="__URL__/f4"></a>
+			<img src="../Public/images/bg31.png" onclick=" window.location.href='__URL__/f4';" style="opacity:0.1;position: absolute;top: 34%;left: 50%;z-index: 300" id="gx" class="animated flash">
+			<img src="../Public/images/bg35.png" onclick=" window.location.href='__URL__/f4';" style="z-index: 77;position: absolute;width: 100%;top:20%;opacity:0.1;left:0px;" id="g2x" class="animated flash">
+			<img src="../Public/images/bg4.png"  onclick=" window.location.href='__URL__/f4';" style="z-index: 1;position: absolute;width: 50%;top:40%;opacity:0.1;left:6%" id="g3x" class="animated flash">
+			<a href="__URL__/f4" class="animated bounce"  id="xx1"><img src="../Public/images/14.png" ></a>
 		</div>
 		<div class="swiper-slide" style="background: url('../Public/images/4.jpg');background-size: 100% 100%">
-			<a href="__URL__/f5"></a>
+			<img src="../Public/images/bg35.png" onclick=" window.location.href='__URL__/f5';" style="z-index: 77;position:absolute;width: 100%;top:22%;left:0%;" id="g2x1" class="animated flash">
+			<img src="../Public/images/bg4.png" onclick=" window.location.href='__URL__/f5';" style="z-index: 1;position: absolute;width: 50%;top:40%;left:6%" id="g3xx1" class="animated flash">
+			<a href="__URL__/f5" class="animated bounce" id="xx2" style="margin-left:0%"><img src="../Public/images/15.png" ></a>
 		</div>
 		<div class="swiper-slide" style="background: url('../Public/images/5.jpg');background-size: 100% 100%">
-			<a href="__URL__/f6"></a>
-		</div>
+			<img src="../Public/images/1111.png" onclick=" window.location.href='__URL__/f6';" style="position: absolute;top: 16%;left:19%;z-index: 100" id="g3x2" class="animated flash">
+			<img src="../Public/images/bg35.png" onclick=" window.location.href='__URL__/f6';" style="z-index: 77;position:absolute;width: 100%;top:20%;left:0px;" id="g3x1" class="animated flash">
+			<a href="__URL__/f6" class="animated bounce" id="xx3" style="margin-left:0%"><img src="../Public/images/16.png" ></a>
+		</div> 
 	</div>
 	<!-- Add Pagination -->
 	<div class="swiper-pagination"></div>
+	<!-- Add Arrows -->
+	<div class="swiper-button-next"></div>
+	<div class="swiper-button-prev"></div>
+</div> 
 </div>
-
 <!-- Swiper JS -->
-<script src="../Public/js/swiper.min.js"></script>
 
+<script type="text/javascript" src="../Public/js/jquery.min.js"></script>
+<script src="../Public/js/swiper.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("body").css("width","100%");
+	})
+</script>
 <!-- Initialize Swiper -->
 <script>
 	var swiper = new Swiper('.swiper-container', {
 		pagination: '.swiper-pagination',
-		paginationClickable: true
+		paginationClickable: '.swiper-pagination',
+		nextButton: '.swiper-button-next',
+		prevButton: '.swiper-button-prev',
+		spaceBetween: 30
 	});
 </script>
+
+
 </body>
 </html>

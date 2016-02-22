@@ -7,9 +7,9 @@
  */
 class JpAction extends Action{
     public function index(){
-        $where["phone"]=array("like","%".$_GET["key"]."%");
+        $where["phone"]=array("like","%".$_GET["keyword"]."%");
         $where['_logic'] = 'OR';
-        $list=D("jp")->where($where)->select();
+        $list=D("jp")->where($where)->limit(1)->select();
         $this->assign("list",$list);
         $this->display();
     }

@@ -18,12 +18,12 @@
     <img src="../Public/images/8_02.png" style="float: right">
 </div>
 <div class="f7">
-    <div style="margin-top: 38%;width: 100%">
-        <img src="__PUBLIC__/upload/{$shop.img}" width="100%"/>
+    <div style="margin-top: 50%;width: 100%;text-align: center">
+        <img src="__PUBLIC__/upload/{$shop.img}" width="80%"/>
     </div>
     <div style="margin-top: 0%;width: 100%;background: url('../Public/images/7_03.png') no-repeat; background-size: 100% 100%;height: 15%">
         <a href="javascript:sshow()" style="display: block;width: 50%; height: 100%;float: left"></a>
-        <a href="__URL__/f8?id={$shop.id}" style="display: block;width: 50%; height: 100%;float: left"></a>
+        <a href="__URL__/f8?id={$shop.id}" id="temp" style="display: block;width: 50%; height: 100%;float: left"></a>
     </div>
 </div>
 </body>
@@ -35,6 +35,21 @@
     function hhide(){
         $("#show").hide();
     }
-
+<eq name="shop.id" value="19">
+$("img").click(function(){
+    alert("美眉今天已经抽过奖咯，请明天再来吧~");
+})
+$("#temp").click(function(){
+    alert("美眉今天已经抽过奖咯，请明天再来吧~");
+})
+</eq>
+<eq name="shop.id" value="20">
+    $("img").click(function(){
+        alert("美眉今天已经抽过奖咯，请明天再来吧~");
+    })
+    $("#temp").click(function(){
+    alert("美眉今天已经抽过奖咯，请明天再来吧~");
+})
+</eq>
 </script>
 </html>

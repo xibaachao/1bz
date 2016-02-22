@@ -11,8 +11,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 </head>
 <style>
-    .temp{margin-top: 155%; height: 10%; width: 100%;}
-    .temp a{display: block;width: 100%; height: 100%;float: left}
+    .temp{height: 10%; width: 100%;position: absolute;bottom: 3%;}
+    .temp a{display: block;width: 100%; height: 100%;}
     .input{background-color:Transparent;width:50%;position: absolute;left: 26%;top: 20%;color: #fff;border: 0px;font-size: 16px;}
     .input1{background-color:Transparent;width:50%;position: absolute;left: 26%;top:27%;color: #fff;border: 0px;font-size: 16px;}
     .regular-radio + label{position: absolute}
@@ -23,23 +23,42 @@
 </style>
 <body >
 <div class="f8">
-        <form>
+        <form id="aa">
             <input type="text" name="name" class="input">
             <input type="text" name="phone" class="input1">
-            <input type="radio" id="radio-1-4" name="ly" class="regular-radio">
+            <input type="radio" id="radio-1-4" name="ly" value="大成网" class="regular-radio">
             <label class="l1" for="radio-1-4"></label>
-            <input type="radio" id="radio-1-5" name="ly" class="regular-radio">
+            <input type="radio" id="radio-1-5" name="ly" value="第四城" class="regular-radio">
             <label class="l2" for="radio-1-5"></label>
-            <input type="radio" id="radio-1-6" name="ly" class="regular-radio">
+            <input type="radio" id="radio-1-6" name="ly" value="其他" class="regular-radio">
             <label class="l3" for="radio-1-6"></label>
             <div class="temp"><a href="javascript:xxx()"></a></div>
         </form>
 </div>
 </body>
-<script type="text/javascript" src="../Public/js/zepto.min.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.min.js"></script>
 <script>
     function xxx(){
-        var da=$("form").serialise();
+
+        if($("input[name='name']").val()==""){
+            alert("请输入姓名");
+            return false;
+        }
+       re = /^1\d{10}$/;
+       if (re.test($("input[name='phone']").val())) {
+
+        } else {
+            alert("请输入正确的电话号码");
+            return false; 
+        }
+
+        var val=$('input:radio[name="ly"]:checked').val();
+         if(val==null){
+                alert("请选择来源!");
+                return false;
+         }
+        var da=$("#aa").serialize();
+        console.info(da);
         $.ajax({
             type: "POST",
             url: "__URL__/sj",
@@ -48,6 +67,10 @@
                if(msg==1)
                {
                    alert("保存成功！");
+                   window.location.href="__URL__/f7";
+               }else if(msg==2)
+               {
+                alert("手机号重复！");
                }
             }
         });
