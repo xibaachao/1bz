@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -23,10 +23,10 @@
     <script>
         wx.config({
             debug: false,
-            appId: '{$signPackage.appId}',
-            timestamp: "{$signPackage.timestamp}",
-            nonceStr: '{$signPackage.nonceStr}',
-            signature: '{$signPackage.signature}',
+            appId: '<?php echo ($signPackage["appId"]); ?>',
+            timestamp: "<?php echo ($signPackage["timestamp"]); ?>",
+            nonceStr: '<?php echo ($signPackage["nonceStr"]); ?>',
+            signature: '<?php echo ($signPackage["signature"]); ?>',
             jsApiList: [
                 'checkJsApi',
                 'onMenuShareTimeline',

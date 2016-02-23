@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -21,7 +21,7 @@
 		}
 		#t2{
 			-webkit-animation-duration: 2s;
-			-webkit-animation-delay: 0s;
+			-webkit-animation-delay: 1s;
 			-webkit-animation-iteration-count: 1;
 		}
 	</style>
@@ -29,19 +29,19 @@
 <body>
 	<div class="index_bg">
 		<div style="position: absolute;top:0px;width:100%;left:-1000px;" id="tt">
-			<img src="../Public/images/eleme-4_01.png" width="100%" class="animated shake" id="t">
+			<img src="../Public/images/eleme-6_01.png" width="100%" class="animated shake" id="t">
 		</div>
 		<div style="position: absolute;top:0px;width:100%">
-			<img src="../Public/images/3.png" style="float:right" width="40%" class="animated bounceInDown" id="t1">
+			<img src="../Public/images/5.png" style="float:right" width="40%" class="animated bounceInDown" id="t1">
 		</div>
 		<div style="position: absolute;top:30%;">
-			<img src="../Public/images/eleme-4_02.png" width="100%" class="animated slideInLeft" id="t2">
+			<img src="../Public/images/eleme-6_03.png" width="100%" class="animated slideInLeft" id="t2">
 		</div>
 		<div style="position: absolute;bottom:0px;">
-			<img src="../Public/images/eleme-4_04.png" width="100%">
-			<a href="__URL__/f5?aa=1" style="display:block;width:33%; height:100%;position: absolute;top:0px;"></a>
-			<a href="__URL__/f5?aa=2" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:33%"></a>
-			<a href="__URL__/f5?aa=3" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:66%"></a>
+			<img src="../Public/images/eleme-6_05.png" width="100%">
+			<a href="__URL__/f7?aa=1" style="display:block;width:33%; height:100%;position: absolute;top:0px;"></a>
+			<a href="__URL__/f7?aa=2" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:33%"></a>
+			<a href="__URL__/f7?aa=3" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:66%"></a>
 		</div>
 	</div>
 		<div style="display:none">
@@ -55,8 +55,6 @@
 			left:"0px",
 		  },2000);
 		$("#tt img").addClass("shake");
-		
-
 	})
 	var myVar=setTimeout(function(){
 	$("#t2").removeClass("slideInLeft");

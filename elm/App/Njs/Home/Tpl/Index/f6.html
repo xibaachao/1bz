@@ -28,21 +28,43 @@
 </head>
 <body>
 	<div class="index_bg">
-		<div>
+		<div style="position: absolute;top:0px;width:100%;left:-1000px;" id="tt">
 			<img src="../Public/images/eleme-6_01.png" width="100%" class="animated shake" id="t">
 		</div>
 		<div style="position: absolute;top:0px;width:100%">
-			<img src="../Public/images/eleme-3_02.png" style="float:right" width="40%" class="animated fadeInUp" id="t1">
+			<img src="../Public/images/5.png" style="float:right" width="40%" class="animated bounceInDown" id="t1">
 		</div>
-		<div>
-			<img src="../Public/images/eleme-6_03.png" width="100%" class="animated pulse" id="t2">
+		<div style="position: absolute;top:30%;">
+			<img src="../Public/images/eleme-6_03.png" width="100%" class="animated slideInLeft" id="t2">
 		</div>
 		<div style="position: absolute;bottom:0px;">
 			<img src="../Public/images/eleme-6_05.png" width="100%">
-			<a href="__URL__/f7" style="display:block;width:33%; height:100%;position: absolute;top:0px;"></a>
-			<a href="__URL__/f7" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:33%"></a>
-			<a href="__URL__/f7" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:66%"></a>
+			<a href="__URL__/f7?aa=1" style="display:block;width:33%; height:100%;position: absolute;top:0px;"></a>
+			<a href="__URL__/f7?aa=2" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:33%"></a>
+			<a href="__URL__/f7?aa=3" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:66%"></a>
 		</div>
 	</div>
+		<div style="display:none">
+		<script src="http://s95.cnzz.com/z_stat.php?id=1257184940&web_id=1257184940" language="JavaScript"></script>
+	</div>
 </body>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#tt").animate({
+			left:"0px",
+		  },2000);
+		$("#tt img").addClass("shake");
+	})
+	var myVar=setTimeout(function(){
+	$("#t2").removeClass("slideInLeft");
+			$("#t2").addClass("pulse");
+			stopTimer();
+		},2600);
+
+function stopTimer()
+    {/* clearInterval() 方法用于停止 setInterval() 方法执行的函数代码*/
+    clearInterval(myVar);
+    }
+</script>
 </html>

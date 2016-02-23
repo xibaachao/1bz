@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -29,19 +29,19 @@
 <body>
 	<div class="index_bg">
 		<div style="position: absolute;top:0px;width:100%;left:-1000px;" id="tt">
-			<img src="../Public/images/eleme-4_01.png" width="100%" class="animated shake" id="t">
+			<img src="../Public/images/eleme-2_01.png" width="100%"  id="t">
 		</div>
 		<div style="position: absolute;top:0px;width:100%">
-			<img src="../Public/images/3.png" style="float:right" width="40%" class="animated bounceInDown" id="t1">
+			<img src="../Public/images/1.png" style="float:right" width="40%" class="animated fadeInUp" id="t1">
 		</div>
 		<div style="position: absolute;top:30%;">
-			<img src="../Public/images/eleme-4_02.png" width="100%" class="animated slideInLeft" id="t2">
+			<img src="../Public/images/eleme-2_02.png" width="100%" class="animated slideInLeft" id="t2"><!--pulse-->
 		</div>
 		<div style="position: absolute;bottom:0px;">
-			<img src="../Public/images/eleme-4_04.png" width="100%">
-			<a href="__URL__/f5?aa=1" style="display:block;width:33%; height:100%;position: absolute;top:0px;"></a>
-			<a href="__URL__/f5?aa=2" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:33%"></a>
-			<a href="__URL__/f5?aa=3" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:66%"></a>
+			<img src="../Public/images/eleme-2_03.png" width="100%">
+			<a href="__URL__/f3?aa=1" style="display:block;width:33%; height:100%;position: absolute;top:0px;"></a>
+			<a href="__URL__/f3?aa=2" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:33%"></a>
+			<a href="__URL__/f3?aa=3" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:66%"></a>
 		</div>
 	</div>
 		<div style="display:none">
@@ -61,12 +61,6 @@
 	var myVar=setTimeout(function(){
 	$("#t2").removeClass("slideInLeft");
 			$("#t2").addClass("pulse");
-			stopTimer();
 		},2600);
-
-function stopTimer()
-    {/* clearInterval() 方法用于停止 setInterval() 方法执行的函数代码*/
-    clearInterval(myVar);
-    }
 </script>
 </html>
