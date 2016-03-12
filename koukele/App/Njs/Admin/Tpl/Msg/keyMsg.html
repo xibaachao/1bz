@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+    <meta charset="utf-8"/>
+    <title>默认回复消息设置</title>
+    <link href="../Public/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../Public/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="../Public/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body style="background-color:#fff !important;margin:20px !important;">
+<div class="page-container row-fluid">
+    <h3>关键字回复设置
+        <small>(根据用户发送的消息,回复不同的消息)</small>
+    </h3>
+    <div class='control-group msg-type-style'>
+        <div class='controls'>
+            <button class='btn black msg-type' msgtype='text-msg' type='button'><i class='icon-edit'></i>
+                文本消息
+            </button>
+            <button class='btn msg-type' msgtype='news-msg' type='button'><i class='icon-file'></i>
+                图文消息
+            </button>
+        </div>
+    </div>
+    <notempty name="state">
+        <eq name="state" value="1">
+            <div class='alert alert-success'>
+                <button class='close' data-dismiss='alert' onclick='$(this).parent().remove()'></button>
+                消息设置成功
+            </div>
+            <else/>
+            <div class='alert alert-error'>
+                <button class='close' data-dismiss='alert' onclick='$(this).parent().remove()'></button>
+                消息设置失败
+            </div>
+        </eq>
+    </notempty>
+    <form class="text-msg" method="post" action="{:U('Msg/keyMsg')}" onsubmit="return subNewMsg();">
+        <input type="hidden" name="type" value="1"/>
+        <input type="hidden" name="id" value="{$sign.id}"/>
+
+        <div>
+            <div class="control-group">
+                <label class='control-label'>用户发送消息</label>
+
+                <div class="controls">
+                    <input type="text" name="key" class="span6" value="{$sign.keyword}" placeholder="用户发送的消息即关键字"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>消息备注</label>
+
+                <div class="controls">
+                    <input type="text" name="remark" class="span6" value="{$sign.remark}" placeholder="消息备注如:关注回复"/>
+                </div>
+            </div>
+            <div class='control-group'>
+                <div class="control-label">公众平台回复文本</div>
+                <div class='controls'>
+                    <textarea name='msg' placeholder='输入对用户发送关键字的回复消息' class='span6' style='height:110px;'>{$sign['reply']|stripslashes}</textarea>
+                </div>
+            </div>
+            <div class='control-group'>
+                <div class='controls'>
+                    <button name='submit' type='submit' class='btn green' value='btn'>
+                        <i class='icon-ok'></i>
+                        确定
+                    </button>
+                    <button type='reset' class='btn'>
+                        <i class='icon-refresh'></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form class='news-msg' method="post" action="{:U('Msg/keyMsg')}">
+        <input type="hidden" name="id" value="{$sign.id}"/>
+
+        <div class='span6' style='margin-left:0px;'>
+            <input type="hidden" name="type" value="2"/>
+
+            <div>
+                <div class="control-group">
+                    <label class='control-label'>用户发送消息</label>
+
+                    <div class='controls'>
+                        <input type="text" class="span12" name="key" value="{$sign.keyword}" placeholder='用户发送的消息即关键字'/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class='control-label'>消息备注</label>
+
+                    <div class="controls">
+                        <input type="text" name="remark" class="span6" value="{$sign.remark}" placeholder="消息备注如:关注回复"/>
+                    </div>
+                </div>
+
+                <div class='control-group'>
+                    <div class='controls'>
+                        <input type="file" name="file" class='file' style="display:none;"/>
+                        <button class='btn c-img' type='button'>选择图片</button>
+                    </div>
+                </div>
+                <div class='control-group'>
+                    <label class='control-label'>标题</label>
+
+                    <div class='controls'>
+                        <input type='text' name='title' class='span12' placeholder='请输入图文标题'/>
+                    </div>
+                </div>
+                <div class='control-group'>
+                    <label class='control-label'>描述</label>
+
+                    <div class='controls'>
+                        <textarea class='span12' placeholder='请输入该图文项描述' name='desc'></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class='control-label'>链接地址</label>
+
+                    <div class='controls'>
+                        <input type='text' class='span12' name='url' placeholder='请输入该图文项链接地址'/>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>
+                    <small>图片支持JPG、PNG格式，较好的效果为大图640*320，小图80*80</small>
+                </label>
+            </div>
+            <div class='control-group'>
+                <div class='controls'>
+                    <button name='submit' type='submit' class='btn green' value='btn'>
+                        <i class='icon-ok'></i>
+                        确定
+                    </button>
+                    <button type='reset' class='btn'>
+                        <i class='icon-refresh'></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class='span6' style='margin-left:10px;'>
+            <ul class='msg-list'>
+                <eq name="sign.reply|is_array" value="true">
+                    <volist name="sign.reply" id="vo" key="k">
+                        <li
+                        <eq name="k" value="1">class='first'</eq>
+                        >
+                        <input type="hidden" name="url[]" value="{$vo.url}"/>
+                        <input type='hidden' name='title[]' value="{$vo.title}"/>
+                        <input type="hidden" name="desc[]" value="{$vo.desc}"/>
+                        <input type="hidden" name="img[]" value="{$vo.img}"/>
+                        <img src="__PUBLIC__/upload/{$vo.img|default='nopic.jpg'}"/>
+
+                        <div class='title'>{$vo.title}</div>
+                        </li>
+                    </volist>
+                    <else/>
+                    <li class='first'>
+                        <input type="hidden" name="url[]" value=""/>
+                        <input type='hidden' name='title[]' value=''/>
+                        <input type="hidden" name="desc[]" value=""/>
+                        <input type="hidden" name="img[]" value=""/>
+                        <img src="../Public/image/nopic.jpg"/>
+
+                        <div class='title'>输入图文描述</div>
+                    </li>
+                </eq>
+                <li class='clone'>
+                    <input type="hidden" name="url[]" value=""/>
+                    <input type='hidden' name='title[]' value=''/>
+                    <input type="hidden" name="desc[]" value=""/>
+                    <input type="hidden" name="img[]" value=""/>
+                    <span class='title'>输入图文描述</span>
+                    <img src="../Public/image/nopic.jpg"/>
+                </li>
+                <li class='add-item last'>
+                    <button class='btn' type='button'>添加一项</button>
+                </li>
+            </ul>
+        </div>
+    </form>
+
+</div>
+<script type="text/javascript" src="../Public/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.form.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var dft_msg_index = "{$sign.type|default=1}";
+        $(".msg-type").click(function () {
+            var type = $(this).attr('msgtype');
+            $(this).addClass('black').siblings('button.msg-type').removeClass('black');
+            $("form." + type).show().siblings("form[class$='-msg']").hide();
+        });//.click();
+        $(".msg-type:eq(" + (dft_msg_index - 1) + ")").click();
+        $('button.c-img').click(function () {
+            $(this).prev('input:file').click();
+        });
+
+        $(".msg-list li:not(.last)").click(function () {
+            $(this).addClass('cur').siblings("li").removeClass('cur');
+            var url = $(this).find("input[name='url[]']").val();
+            var desc = $(this).find("input[name='desc[]']").val();
+            var title = $(this).find("input[name='title[]']").val();
+            $(".news-msg").find(".controls input[name='url']").val(url);
+            $(".news-msg").find(".controls textarea[name='desc']").val(desc);
+            $(".news-msg").find(".controls input[name='title']").val(title);
+        });
+        $("form.news-msg textarea[name='desc']").blur(function () {
+            var li = $(".msg-list li.cur");
+            li.find("input:hidden[name='desc[]']").val($(this).val());
+            //li.find(".title").html($(this).val());
+        });
+
+        $("form.news-msg input[name='title']").blur(function () {
+            var li = $(".msg-list li.cur");
+            li.find("input:hidden[name='title[]']").val($(this).val());
+            li.find('.title').html($(this).val());
+        });
+
+
+        $("form.news-msg input[name='url']").blur(function () {
+            var li = $(".msg-list li.cur");
+            li.find("input:hidden[name='url[]']").val($(this).val());
+        });
+
+        $("li.add-item .btn").click(function () {
+            var pt = $(this).parent();
+            pt.siblings("li.clone").clone(true).insertBefore(pt).removeClass('clone');
+            console.log('xx');
+        });
+
+        //文件上传
+        $(".file").change(function () {
+            var _file = $(this);
+            _file.wrap("<form id='fm' method='post' action='{:U('Public/ajax_upload')}' enctype='multipart/form-data'></form>");
+            $("#fm").ajaxSubmit({
+                dataType: 'json',
+                success: function (data) {
+                    var li = $(".msg-list li.cur");
+                    if (data.state == 0)
+                        alert(data.error);
+                    else {
+                        li.find("img").attr('src', "__PUBLIC__/upload/" + data.file);
+                        li.find("input:hidden[name='img[]']").val(data.file);
+                    }
+                    _file.unwrap();
+                },
+                error: function () {
+                    _file.unwrap();
+                    alert('上传发生错误');
+                }
+            });
+        });
+    });
+
+    function subNewMsg() {
+        $(".msg-list li.clone").remove();
+        return true;
+    }
+</script>
+</body>
+</html>
