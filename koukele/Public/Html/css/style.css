@@ -1,0 +1,5 @@
+*{padding: 0px;margin: 0px;}
+.index-div-bg{width: 100%;height: 100%; background: url(../img/index-bg.png); background-size: 100% 100%; position: absolute;}
+.index-div-bg img{width: 100%;}
+.index-div1{position: absolute;top: 25%;}
+.index-div2{position: absolute;top: 35%;}
