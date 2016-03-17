@@ -1,5 +1,52 @@
 *{padding: 0px;margin: 0px;}
-.index-div-bg{width: 100%;height: 100%; background: url(../img/index-bg.png); background-size: 100% 100%; position: absolute;}
+.index-div-bg{width: 100%;height: 100%; background: url(../img/1.gif); background-size: 100% 100%; position: absolute;}
 .index-div-bg img{width: 100%;}
+.index-div-bg a{display:block; width: 100%;height: 40%;position: absolute;top: 40%;}
 .index-div1{position: absolute;top: 25%;}
 .index-div2{position: absolute;top: 35%;}
+.index2-div-bg{width: 100%; height: 100%;background: url(../img/index-bg2.png); background-size: 100% 100%; position: absolute;}
+.index2-div{width: 100%; height: 20%;position: absolute;top: 30%;}
+.index2-div div{float: left;width: 30%;margin-left: 3%;}
+.index2-div div img{width: 100%;}
+.index2-div2{width: 100%;height: 20%; position: absolute;top: 48%;}
+.index2-div2 div{float: left;width: 30%;color: white;font-weight: bold;font-size: 12px; text-align: center;margin-left: 3%;}
+.index2-div3{width: 100%; height: 20%; position: absolute; top: 55%;text-align: center;}
+.index2-div3 img{text-align: center; width: 50%;}
+.index2-div4{width: 100%; height: 10%;position: absolute;top: 63%;}
+.index2-div5{width: 100%; height: 35%;position: absolute;bottom: 0px;text-align: center;}
+.index2-div5 img{width: 97%;}
+
+.index3-div-bg{width: 100%;height: 100%; background: url(../img/index-bg3.png); background-size: 100% 100%; position: absolute;}
+.index3-div1{width: 80%;height: 50%;background: url(../img/31_03.png);background-size: 100% 100%;margin: 0 auto;margin-top: 5%;}
+.index3-div1 img{width: 50%;border: 0px;margin: 0px;height: 33%;}
+.index3-div2{width: 80%; height: 20%;margin: 0 auto;margin-top: 5%;}
+.index3-div2 img{width: 30%;height: 72%;margin-left: 3%;vertical-align:bottom;font-size:0;float:left}
+
+.index4-div-bg{width: 100%;height: 100%; background: url(../img/index-bg4.png); background-size: 100% 100%; position: absolute;}
+.index4-div1{width: 100%; height: 3%; text-align: center;color: white;font-size: 18px; font-weight: bold;margin-top: 10%;}
+/* votebox */
+.votebox{width:50%;margin-left:15px;text-align:left;position:relative;z-index:66;}
+/* barbox */
+.barbox{height:16px;line-height:16px;overflow:hidden;}
+.barbox dt a{color:#0048CC;}
+.barbox dd{float:left;}
+.barbox dd.last{color:#999;}
+.barbox dd.barline{width:100%;background:url(../img/jdtbg.png) left center no-repeat;height:16px;overflow:hidden;display:inline;}
+.barbox dd.barline div.charts{height:16px;overflow:hidden;background:url(../img/barbg.gif) right center repeat-x;border-radius:8px;}
+.index4-div2{width: 70%; height: 40%;margin: 0 auto;margin-top: 10%;}
+.index4-div2 img{width: 100%;}
+.index4-div3{width: 70%;height: 20%; margin: 0 auto;margin-top: 20%;}
+.index4-div3 img{width: 100%;}
+
+
+.index5-div-bg{width: 100%;height: 100%; background: url(../img/index-bg5.png); background-size: 100% 100%; position: absolute;}
+.index5-div1{width: 80%;margin: 0 auto;margin-top: 50%;}
+.index5-div1 img{width: 100%;}
+.index5-div2{width: 100%; height: 9%;background: url(../img/61_06.png);background-size: 100% 100%; margin-top: 20%;}
+.index5-div2 input{border: 0px;font-size: 16px;background-color:transparent;color: white;}
+.index5-input1{width: 30%;margin-left: 19%;}
+.index5-input2{width: 33%;margin-left: 10%;}
+.index5-input3{width: 75%;margin-left: 19%;margin-top: 4%;}
+.index5-div3{width: 50%; height: 9%;margin:0 auto;margin-top: 10%;}
+.index5-div3 img{width: 100%;}
+

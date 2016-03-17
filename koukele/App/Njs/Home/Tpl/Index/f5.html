@@ -1,70 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-	<meta charset="UTF-8">
-	<title>标题</title>
-	<meta name="keywords" content=""/>
-	<meta name="description" content=''/>
-	<link rel="stylesheet" type="text/css" href="../Public/css/style.css">
-	<link rel="stylesheet" type="text/css" href="../Public/css/animate.min.css">
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-	<style type="text/css">
-		#t{
-			-webkit-animation-duration: 6s;
-			-webkit-animation-delay: 1s;
-			-webkit-animation-iteration-count: infinite;
-		}
-		#t1{
-			-webkit-animation-duration: 2s;
-			-webkit-animation-delay: 1s;
-			-webkit-animation-iteration-count: 1;
-		}
-		#t2{
-			-webkit-animation-duration: 2s;
-			-webkit-animation-delay: 1s;
-			-webkit-animation-iteration-count: 1;
-		}
-	</style>
+<meta charset="utf-8" />
+<title></title>
+<link href="__PUBLIC__/Html/css/style.css" rel="stylesheet"
+	type="text/css" />
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 </head>
-<body>
-	<div class="index_bg">
-		<div style="position: absolute;top:0px;width:100%;left:-1000px;" id="tt">
-			<img src="../Public/images/eleme-5_01.png" width="100%" class="animated shake" id="t">
+
+<body style="height: 100%; width: 100%;">
+	<div class="index5-div-bg">
+		<div class="index5-div1">
+			<img src="__PUBLIC__/Upload/{$one.img}">
 		</div>
-		<div style="position: absolute;top:0px;width:100%">
-			<img src="../Public/images/4.png" style="float:right" width="40%" class="animated bounceInDown" id="t1">
+		<div class="index5-div2">
+			<form action="">
+			<input name="name" type="text" class="index5-input1" /> 
+			<input name="iphone" type="phone" class="index5-input2" />
+			<input type="text" name="address" class="index5-input3" />
+			</form>
 		</div>
-		<div style="position: absolute;top:30%;">
-			<img src="../Public/images/eleme-5_02.png" width="100%" class="animated slideInLeft" id="t2">
+		<div class="index5-div3">
+			<a href="javascript:sub()"><img
+				src="__PUBLIC__/Html/img/61_09.png"></a>
 		</div>
-		<div style="position: absolute;bottom:0px;">
-			<img src="../Public/images/eleme-5_04.png" width="100%">
-			<a href="__URL__/f6?aa=1" style="display:block;width:33%; height:100%;position: absolute;top:0px;"></a>
-			<a href="__URL__/f6?aa=2" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:33%"></a>
-			<a href="__URL__/f6?aa=3" style="display:block;width:33%; height:100%;position: absolute;top:0px;left:66%"></a>
-		</div>
-	</div>
-		<div style="display:none">
-		<script src="http://s95.cnzz.com/z_stat.php?id=1257184940&web_id=1257184940" language="JavaScript"></script>
 	</div>
 </body>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" src="__PUBLIC__/Html/js/jquery-1.8.3.min.js"></script>
+<script>
 	$(function(){
-		$("#tt").animate({
-			left:"0px",
-		  },2000);
-		$("#tt img").addClass("shake");
+		var temp="{$user.openid}";
+		if(temp!="")
+		{
+			alert("亲！今天已参加过活动，请明天再来！");
+			window.location.href="__URL__/f1";
+		}
 	})
-	var myVar=setTimeout(function(){
-	$("#t2").removeClass("slideInLeft");
-			$("#t2").addClass("pulse");
-			stopTimer();
-		},2600);
 
-function stopTimer()
-    {/* clearInterval() 方法用于停止 setInterval() 方法执行的函数代码*/
-    clearInterval(myVar);
-    }
+	function sub() {
+		if ($("input[name='name']").val() == "") {
+			alert("请输入姓名");
+			return false;
+		}
+		re = /^1\d{10}$/;
+		if (re.test($("input[name='iphone']").val())) {
+
+		} else {
+			alert("请输入正确的电话号码");
+			return false;
+		}
+		if ($("input[name='address']").val() == "") {
+			alert("请输入地址");
+			return false;
+		}
+		 var da=$("#aa").serialize();
+		 $.ajax({
+	            type: "POST",
+	            url: "__URL__/sj",
+	            data: da,
+	            success: function(msg){
+	               if(msg==1)
+	               {
+	                   alert("此电话已参加过活动！");
+	                   window.location.href="__URL__/f1";
+	               }else if(msg==2)
+	               {
+	               		alert("亲！今天已参加过活动，请明天再来！");
+	               		window.location.href="__URL__/f1";
+	               }else if(msg==3)
+	               {
+	            	   alert("提交成功");
+	            	   window.location.href="__URL__/f1";
+	            	}
+	            }
+	        });
+
+	}
 </script>
 </html>

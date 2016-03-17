@@ -68,7 +68,7 @@ class AuthAction extends Action
 
         $redirect = urlencode(U("Auth/applyAuth", $param, true, false, true));
 
-        $auth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$config['AppId']}&redirect_uri={$redirect}&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect&openid={$_GET['openid']}";
+        $auth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$config['AppId']}&redirect_uri={$redirect}&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
 
         header("Location:" . $auth_url);
 
@@ -96,6 +96,11 @@ class AuthAction extends Action
 
         $token_json = json_decode($token_body, true);
 
+        cookie("openid",$token_json["openid"]);
+       
+        $this->redirect("Index/index");
+        exit();
+
         $info_url = "https://api.weixin.qq.com/sns/userinfo?access_token={$token_json['access_token']}&openid={$token_json['openid']}";
 
         $info_body = file_get_contents($info_url);
@@ -110,7 +115,7 @@ class AuthAction extends Action
 
         D("userinfo")->where(array('openid' => $opid))->setInc('score', $db[0]['score']);
 
-        $this->redirect("Index/index");
+      // $this->redirect("Index/index");
 
     }
 

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	</head>
+
+	<body style="height: 100%; width: 100%;">
+		<div class="index3-div-bg">
+			<div class="index4-div1">
+				<span id="no">10</span><span>S</span>
+			</div>
+			<div class="votebox" style="margin:0px auto 0 auto">
+				<dl class="barbox">
+					<dd class="barline">
+						<div w="100" style="width:0px;" class="charts"></div>
+					</dd>
+				</dl>
+			</div>
+			<div class="index3-div1" id="goup1">
+
+			</div>
+			<div class="index3-div2" id="goup2">
+				<img src="img/31_07.png">
+				<img src="img/31_09.png">
+				<img src="img/31_11.png">
+				<img src="img/31_17.png">
+				<img src="img/31_18.png">
+				<img src="img/31_19.png">
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/Sortable.js"></script>
+	<script>
+		var foo = document.getElementById("goup1");
+		new Sortable(foo, {
+			group: "omega"
+		});
+		var bar = document.getElementById("goup2");
+		new Sortable(bar, {
+			group: "omega"
+		});
+		
+		function animate(){
+		$(".charts").each(function(i,item){
+			var a=parseInt($(item).attr("w"));
+			$(item).animate({
+				width: a+"%"
+			},10000);
+			});
+		}
+		animate();
+		var t=setInterval("reduce()",1000);
+		function reduce(){
+			var no=parseInt($("#no").text());
+			if(no==0)
+			{
+				alert("游戏结束");
+				clearTimeout(t);
+			}else{
+				$("#no").text(no-1);
+			}
+			
+			
+		}
+		
+	</script>
+
+</html>
