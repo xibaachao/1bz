@@ -13,36 +13,43 @@
 <body style="height: 100%; width: 100%;">
 	<div class="index3-div-bg">
 		<div class="index4-div1">
-			<span id="no">15</span><span>S</span>
+			<span id="no">8</span><span>S</span>
 		</div>
-		<div class="votebox" style="margin: 0px auto 0 auto">
+		<div class="votebox" style="margin: 0px auto 0 auto;margin-top: 2%">
 			<dl class="barbox">
 				<dd class="barline">
 					<div w="100" style="width: 0px;" class="charts"></div>
 				</dd>
 			</dl>
 		</div>
-		<div class="index3-div1" id="goup1"></div>
+		<div class="index3-div1" id="goup1">
+			<img src="__PUBLIC__/Html/img/a.png" class="aa"><img class="aa" src="__PUBLIC__/Html/img/a.png"><img class="aa" src="__PUBLIC__/Html/img/a.png"><img class="aa" src="__PUBLIC__/Html/img/a.png"><img  class="aa" src="__PUBLIC__/Html/img/a.png"><img class="aa" src="__PUBLIC__/Html/img/a.png">
+		</div>
 		<div class="index3-div2" id="goup2">
 			<volist name="list" id="vo"><img src="__PUBLIC__/Upload/{$vo.img}" achao="{$key}" /></volist>
 		</div>
 
 	</div>
+	<div style="display: none;">
+			<script src="http://s95.cnzz.com/z_stat.php?id=1257184940&web_id=1257184940" language="JavaScript"></script>
+		</div>
 </body>
 <script type="text/javascript"
 	src="__PUBLIC__/Html/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/Html/js/Sortable.js"></script>
 <script>
 	var foo = document.getElementById("goup1");
-	new Sortable(foo, {
-		group : "omega",
-		onUpdate : function(evt) {			
-		}
-	});
+	new Sortable.create(foo, { group: "omega",
+		onUpdate: function (evt/**Event*/){
+
+ 		 }
+
+	 });
 	var bar = document.getElementById("goup2");
 	new Sortable(bar, {
 		group : "omega",
-		onUpdate : function(evt) {				
+		onUpdate : function(evt) {
+				
 		}
 	});
 
@@ -51,20 +58,19 @@
 			var a = parseInt($(item).attr("w"));
 			$(item).animate({
 				width : a + "%"
-			}, 15000);
+			},9000);
 		});
 	}
 	animate();
 	var t = setInterval("reduce()", 1000);
-	var t1 = setInterval("ok()", 1000);
+	var t1 = setInterval("ok()", 100);	
 	function reduce() {
 		var no = parseInt($("#no").text());
 		if (no == 0) {
 			clearTimeout(t1);
 			clearTimeout(t);
 			alert("时间到");
-			
-			
+			window.location.href="__URL__/f1";			
 		} else {
 			$("#no").text(no - 1);
 		}
@@ -81,7 +87,6 @@
 		function rnd(a, b) {
 			return Math.random() > 0.5 ? -1 : 1;
 		}
-
 		obox.innerHTML = "";
 		var newArray = lis.sort(rnd);
 		for (var i = 0, l = newArray.length; i < l; i++) {
@@ -91,15 +96,25 @@
 	})
 	//判断是否拼接成功
 	function ok(){
-		$("#goup1 img").each(function(i){			
-			if(parseInt($(this).attr("achao"))==i && i==5)
+		var temp=$("#goup1 img").length;
+		if (temp>6) {
+
+			$(".aa:last").remove();
+		}
+		
+		$("#goup1 img").each(function(i){
+			if(parseInt($(this).attr("achao"))==i)
 			{	
-				clearTimeout(t1);
-				 window.location.href="__URL__/f4?time="+$("#no").text()+"&id={$one.id}"; 
-			}else{			
+				if(i==5)
+				{
+					clearTimeout(t1);
+					window.location.href="__URL__/f4?time="+$("#no").text()+"&id={$one.id}"; 
+				}
+			}else{
+				return false;	
 			}
 		})
 	}
 </script>
 
-</html>
+</html> 

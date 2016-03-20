@@ -5,7 +5,7 @@
  * Date: 2015/3/19 0019
  * Time: 下午 5:48
  */
-class IndexAction extends Action {
+class IndexAction extends BaseAction {
 	// 这个是显示的方法
 	function index() {
 		$this->display ();
@@ -19,15 +19,12 @@ class IndexAction extends Action {
 	
 	// 查询项目
 	function f3() {
-		$where ["type"] = 1;
-		$prize_arr = D ( "Xm" )->where ( $where )->select ();
-		foreach ( $prize_arr as $key => $val ) {
-			$arr [$val ['id']] = $val ['jl'];
-		}
-		$id = $this->get_rand ( $arr );
+		$where =null;
+		$id=$_GET["id"];
 		$imgs = D ( "img" )->where ( array (
 				"prize_id" => $id 
 		) )->select ();
+		
 		$one = D ( "xm" )->where ( array (
 				"id" => $id 
 		) )->find ();
@@ -41,7 +38,7 @@ class IndexAction extends Action {
 		) )->find ();
 		$one = D ( "xm" )->where ( array (
 				"type" => $one ["type"] 
-		) )->order ( "id desc" )->find ();
+		) )->order ( "id asc" )->find ();
 		$this->assign ( "one", $one );
 		$this->assign ( "time", $_GET ["time"] );
 		$this->display ();
@@ -54,16 +51,26 @@ class IndexAction extends Action {
 		$day = date ( "d" );
 		$dayBegin = mktime ( 0, 0, 0, $month, $day, $year ); // 当天开始时间戳
 		$dayEnd = mktime ( 23, 59, 59, $month, $day, $year ); // 当天结束时间戳
-		$where["time"]= array('between',array($dayBegin,$dayEnd));
-		$where["openid"]=$openid;
-		$user=D("win")->where($where)->find();
-		$this->assign("user",$user);
+		$where ["time"] = array (
+				'between',
+				array (
+						$dayBegin,
+						$dayEnd 
+				) 
+		);
+		$where ["openid"] = $openid;
+		$user = D ( "win" )->where ( $where )->find ();
+		$this->assign ( "user", $user );
 		
-		$prize_arr = D ( "prize" )->where ( "no > 0" )->select ();
+		$prize_arr = D ( "prize" )->where ( "no>0" )->select ();
 		foreach ( $prize_arr as $key => $val ) {
 			$arr [$val ['id']] = $val ['jl'];
 		}
 		$id = $this->get_rand ( $arr );
+		$id == "" ? 1:$id;
+		if($id==1){
+			$this->redirect("f7");
+		}
 		$this->assign ( "one", D ( "prize" )->where ( array (
 				"id" => $id 
 		) )->find () );
@@ -80,22 +87,31 @@ class IndexAction extends Action {
 		$day = date ( "d" );
 		$dayBegin = mktime ( 0, 0, 0, $month, $day, $year ); // 当天开始时间戳
 		$dayEnd = mktime ( 23, 59, 59, $month, $day, $year ); // 当天结束时间戳
-		$iphone=D("win")->where(array("iphone"=>$_POST["iphone"]))->find();
-		if($iphone!=null)
-		{
-			echo 1;//手机重复
-			exit();
+		$iphone = D ( "win" )->where ( array (
+				"iphone" => $_POST ["iphone"] 
+		) )->find ();
+		if ($iphone != null) {
+			echo 1; // 手机重复
+			exit ();
 		}
-		$where["time"]= array('between',array($dayBegin,$dayEnd));
-		$where["openid"]=$openid;
-		$user=D("win")->where($where)->find();
-		if($user!=null)
-		{
+		$where ["time"] = array (
+				'between',
+				array (
+						$dayBegin,
+						$dayEnd 
+				) 
+		);
+		$where ["openid"] = $openid;
+		$user = D ( "win" )->where ( $where )->find ();
+		if ($user != null) {
 			echo 2;
-			exit();
+			exit ();
 		}
-		if(D("win")->where($where)->add($_POST))
-		{
+		$_POST["time"]=time();
+		$_POST["status"]=0;
+		$_POST["openid"]=cookie("openid");
+		if (D ( "win" )->where ( $where )->add ( $_POST )) {
+			D("prize")->where(array("id"=>$_POST["prize_id"]))->setDec("no");			
 			echo 3;
 		}
 	}
@@ -110,18 +126,24 @@ class IndexAction extends Action {
 		$day = date ( "d" );
 		$dayBegin = mktime ( 0, 0, 0, $month, $day, $year ); // 当天开始时间戳
 		$dayEnd = mktime ( 23, 59, 59, $month, $day, $year ); // 当天结束时间戳
-	    $iphone=D("win")->where(array("iphone"=>$_POST["iphone"]))->find();
-		if($iphone!=null)
-		{
-			echo 1;//手机重复
-			exit();
+		$iphone = D ( "win" )->where ( array (
+				"iphone" => $_POST ["iphone"] 
+		) )->find ();
+		if ($iphone != null) {
+			echo 1; // 手机重复
+			exit ();
 		}
-		$where["time"]= array('between',array($dayBegin,$dayEnd));
-		$user=D("win")->where($where)->find();
-		if($user!=null)
-		{
+		$where ["time"] = array (
+				'between',
+				array (
+						$dayBegin,
+						$dayEnd 
+				) 
+		);
+		$user = D ( "win" )->where ( $where )->find ();
+		if ($user != null) {
 			echo 2;
-			exit();
+			exit ();
 		}
 		echo 3;
 	}
@@ -146,5 +168,33 @@ class IndexAction extends Action {
 		}
 		unset ( $proArr );
 		return $result;
+	}
+	function temp() {
+		$one = D ( "xm" )->where ( array (
+				"id" => $_GET ["id"] 
+		) )->find ();
+		if ($one ["id"] == 1) {
+			$this->assign ( "temp", "33_03.png" );
+		}
+		if ($one ["id"] == 2) {
+			$this->assign ( "temp", "43_03.png" );
+		}
+		if ($one ["id"] == 3) {
+			$this->assign ( "temp", "53_03.png" );
+		}
+		
+		$one = D ( "xm" )->where ( array (
+				"type" => $one ["type"] 
+		) )->order ( "id desc" )->find ();
+		$this->assign ( "one", $one );
+		$this->assign ( "time", $_GET ["time"] );
+		
+		$this->display ();
+	}
+	/**
+	 * 抽不到将
+	 */
+	function f7(){
+		$this->display();
 	}
 }

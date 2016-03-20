@@ -6,6 +6,9 @@
 		<title></title>
 		<link href="__PUBLIC__/Html/css/style.css" rel="stylesheet" type="text/css" />
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 	</head>
 
 	<body style="height: 100%; width: 100%;">
@@ -24,8 +27,11 @@
 				<img src="__PUBLIC__/Upload/{$one.img}">
 			</div>
 			<div class="index4-div3">
-				<a href="__URL__/f5"><img src="__PUBLIC__/Html/img/32_07.png"></a>
+				<a href="javascript:go()"><img src="__PUBLIC__/Html/img/32_07.png"></a>
 			</div>
+		</div>
+		<div style="display: none;">
+			<script src="http://s95.cnzz.com/z_stat.php?id=1257184940&web_id=1257184940" language="JavaScript"></script>
 		</div>
 	</body>
 	<script type="text/javascript" src="__PUBLIC__/Html/js/jquery-1.8.3.min.js"></script>
@@ -34,6 +40,9 @@
 			$(".charts").width("{$time}0%");
 		}
 		animate();
+		function go(){
+			window.location.href="__URL__/temp?time={$time}&id={$one.id}"; 
+		}
 	</script>
 
 </html>
