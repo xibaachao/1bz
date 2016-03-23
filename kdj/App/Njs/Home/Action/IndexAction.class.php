@@ -14,6 +14,28 @@ class IndexAction extends Action {
 	function f1(){
 		$this->display();
 	}
+	//第二页
+	function f2(){
+		if($_GET["man"]!=null)
+		{
+			$_SESSION["man"]=$_GET["man"];
+		}else{
+			$thsi->redirect("index");
+		}
+		$this->display();
+	}
+
+	//失败
+	function f3(){
+		$this->display();
+	}
 	
-	
+	//奖品一
+	function f4(){
+		$this->display();
+	}
+	//奖品二
+	function f5(){
+		$this->display();
+	}
 }

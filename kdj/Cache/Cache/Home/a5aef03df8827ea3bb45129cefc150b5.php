@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>肯德基</title>
+	<title>与小可一起为"蓝"生活</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
@@ -29,10 +29,10 @@
     <script>
         wx.config({
             debug: false,
-            appId: '{$signPackage.appId}',
-            timestamp: "{$signPackage.timestamp}",
-            nonceStr: '{$signPackage.nonceStr}',
-            signature: '{$signPackage.signature}',
+            appId: '<?php echo ($signPackage["appId"]); ?>',
+            timestamp: "<?php echo ($signPackage["timestamp"]); ?>",
+            nonceStr: '<?php echo ($signPackage["nonceStr"]); ?>',
+            signature: '<?php echo ($signPackage["signature"]); ?>',
             jsApiList: [
                 'checkJsApi',
                 'onMenuShareTimeline',

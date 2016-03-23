@@ -1,0 +1,15 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link href="__PUBLIC__/Html/css/style.css" rel="stylesheet" type="text/css" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+</head>
+<body>
+	<div class="kdj_index1_bg3">
+		<a href="/"></a>
+	</div>
+</body>
+</html>
