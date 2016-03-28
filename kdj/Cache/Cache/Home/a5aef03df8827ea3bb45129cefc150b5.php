@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>与小可一起为"蓝"生活</title>
+	<title>肯德基</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
@@ -16,118 +16,9 @@
 	</style>
 </head>
 <body>
-<div style="display: none;">
-            <script src="http://s95.cnzz.com/z_stat.php?id=1257184940&web_id=1257184940" language="JavaScript"></script>
-        </div>
 <div  id="xx" style="width:100%;height:100%;position: absolute;">
 	<iframe src="__URL__/f1" width="100%" height="100%" frameborder="0"></iframe>
 </div>
 	<iframe src="__URL__/music"/></iframe>
 </body>
-
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-    <script>
-        wx.config({
-            debug: false,
-            appId: '<?php echo ($signPackage["appId"]); ?>',
-            timestamp: "<?php echo ($signPackage["timestamp"]); ?>",
-            nonceStr: '<?php echo ($signPackage["nonceStr"]); ?>',
-            signature: '<?php echo ($signPackage["signature"]); ?>',
-            jsApiList: [
-                'checkJsApi',
-                'onMenuShareTimeline',
-                'onMenuShareAppMessage',
-                'onMenuShareQQ',
-                'onMenuShareWeibo',
-                'hideMenuItems',
-                'showMenuItems',
-                'hideAllNonBaseMenuItem',
-                'showAllNonBaseMenuItem',
-                'translateVoice',
-                'startRecord',
-                'stopRecord',
-                'onRecordEnd',
-                'playVoice',
-                'pauseVoice',
-                'stopVoice',
-                'uploadVoice',
-                'downloadVoice',
-                'chooseImage',
-                'previewImage',
-                'uploadImage',
-                'downloadImage',
-                'getNetworkType',
-                'openLocation',
-                'getLocation',
-                'hideOptionMenu',
-                'showOptionMenu',
-                'closeWindow',
-                'scanQRCode',
-                'chooseWXPay',
-                'openProductSpecificView',
-                'addCard',
-                'chooseCard',
-                'openCard'
-            ]
-        });
-        wx.ready(function () {
-            var title="可口可乐相约为蓝生活";
-            var link="http://z-jc.cn";
-            var imgUrl="http://z-jc.cn/share.jpg";
-            var desc="除雾霾，洁大海，造绿地，我和可口可乐一起保卫地球。";
-            wx.onMenuShareTimeline({
-                title: "除雾霾，洁大海，造绿地，我和可口可乐一起保卫地球。", // 分享标题
-                link: link, // 分享链接
-                imgUrl: imgUrl, // 分享图标
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
-            });
-            wx.onMenuShareAppMessage({
-                title: title, // 分享标题
-                desc: desc, // 分享描述
-                link: link, // 分享链接
-                imgUrl: imgUrl, // 分享图标
-                type: '', // 分享类型,music.video或link，不填默认为link
-                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
-            });
-            wx.onMenuShareQQ({
-                title: title, // 分享标题
-                desc: desc, // 分享描述
-                link: link, // 分享链接
-                imgUrl: imgUrl, // 分享图标
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
-            });
-            wx.onMenuShareWeibo({
-                title: title, // 分享标题
-                desc: desc, // 分享描述
-                link: link, // 分享链接
-                imgUrl: imgUrl, // 分享图标
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
-            });
-
-
-
-        });
-    </script>
-
 </html>

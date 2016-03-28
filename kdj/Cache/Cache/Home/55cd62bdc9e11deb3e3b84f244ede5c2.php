@@ -6,6 +6,7 @@
 	<title></title>
 	<link href="__PUBLIC__/Html/css/style.css" rel="stylesheet" type="text/css" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 <body>
 	<div class="kdj_index2_div1">
@@ -18,63 +19,111 @@
 		<div class="miao">
 			<span id="miao">10</span>
 		</div>
-		<div class="dj1" id="temp">
+		<a class="dj1" id="temp" href="javascript:void()">
 			
-		</div>
-		<div class="dj"></div>
+		</a>
+		<div class="dj"><img src="__PUBLIC__/Html/img/P2_03.png"></div>
 	</div>
 </body>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/fastclick.js"></script>
 <script type="text/javascript">
-	var t;
-	var no=parseInt($("#miao").text());
+	var t; 
+	var no=parseInt($("#miao").text());//剩余时间
+	var people=<?php echo ($man); ?>; //人物
 	$(function(){
-	// 游戏开始
-	$(".dj").on("click",function(){
-		$(".dj1").on("click",function(){
-			dj();
-		})
-		t=setInterval("pandu()", 1000);
-	})	
-})
+		FastClick.attach(document.body);
+    	// 游戏开始
+    	$(".dj").on("click",function(){
+
+    		if(no>0)
+    		{
+    			$(".dj1").on("click",function(){
+    				dj();
+    			})
+    			t=setInterval("pandu()", 1000);
+    			$(".dj img").attr("src","__PUBLIC__/Html/img/P3_03.png");
+    			$(".dj img").css("margin-top","7%");
+    		}else{
+
+
+    		}
+    		
+
+
+
+    	})
+    })
 
 	function dj(){
 		$("#temp").append('<img src="__PUBLIC__/Html/img/dj.png" class="img">');
-		temp=parseInt($("#nl").text());		
+		temp=parseInt($("#nl").text());	//得分
 		if(no>0)
-		{	temp=temp+1;	
+		{	
+			temp=temp+1;	
 			$("#nl").text(temp);
-			if($(".kdj_index2_div1 img").attr("src")=='__PUBLIC__/Html/img/P3_01.png')
+			if($(".kdj_index2_div1 img").attr("src")!='__PUBLIC__/Html/img/P3_01.png')
 			{
-				$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/P4_01.png")
-			}else{
 				$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/P3_01.png")
+			}else{
+				$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/P4_01.png")
 			}
 		}else{
 			if(temp>35)
 			{
-				$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/P5_01.png")
-				setTimeout('ok()',2000); 
+				if(people==1)
+				{
+					$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/cg.png")
+					$(".dj img").attr("src","__PUBLIC__/Html/img/fx.png");
+					setTimeout('ok()',3000); 
+				}else{
+					$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/bf.png")
+					$(".dj img").attr("src","__PUBLIC__/Html/img/fx.png");
+					setTimeout('ok()',3000); 
+				}				
 			}else{
-				$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/P5_01.png")
-				setTimeout('nono()',2000); 
+				if(people==1)
+				{
+					$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/cs.png");
+					$(".dj img").attr("src","__PUBLIC__/Html/img/ag.png");
+					setTimeout('none()',3000); 
+				}else{
+					$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/bs_01.png");
+					$(".dj img").attr("src","__PUBLIC__/Html/img/ag.png");
+					setTimeout('none()',3000); 
+				}
 			}
 		}
-}
+	}
 //判断时间
-function pandu(){
-	
+function pandu(){	
 	if (no==0) {
 		clearInterval(t);
 		temp=parseInt($("#nl").text());	
 		if(temp>35)
+		{
+			if(people==1)
 			{
-				$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/P5_01.png")
-				setTimeout('ok()',2000); 
+				$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/cg.png")
+				setTimeout('ok()',3000); 
+				$(".dj img").attr("src","__PUBLIC__/Html/img/fx.png");
 			}else{
-				$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/P5_01.png")
-				setTimeout('nono()',2000); 
-			}	
+				$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/bf.png")
+				$(".dj img").attr("src","__PUBLIC__/Html/img/fx.png");
+				setTimeout('ok()',3000); 
+			}				
+		}else{
+			if(people==1)
+			{
+				$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/cs.png")
+				$(".dj img").attr("src","__PUBLIC__/Html/img/ag.png");
+				setTimeout('nono()',3000); 
+			}else{
+				$(".kdj_index2_div1 img").attr("src","__PUBLIC__/Html/img/bs_01.png")
+				$(".dj img").attr("src","__PUBLIC__/Html/img/ag.png");
+				setTimeout('nono()',3000); 
+			}
+		}
 	}else{
 		no=no-1;
 	}
@@ -82,9 +131,15 @@ function pandu(){
 }
 
 function ok(){
-	window.location.href="__URL__/f4";
+	var urls = [
+	"__URL__/f4", 
+	"__URL__/f5",
+	"__URL__/f6", 
+	"__URL__/f7",
+	];
+	var jumpTo = urls[parseInt(Math.random() * urls.length)];	
+	window.location.href=jumpTo;
 }
-
 function nono(){
 	window.location.href="__URL__/f3";
 }

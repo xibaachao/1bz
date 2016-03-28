@@ -12,8 +12,8 @@
 <body>
 	<div class="kdj_index1_bg">
 		<div id="d">
-			<img src="__PUBLIC__/Html/img/c.png" width="100%" class="kdj_index1_bg_i1 kdj_index1_bg_hide" />
-			<img src="__PUBLIC__/Html/img/b.png" width="100%" class="kdj_index1_bg_i2 kdj_index1_bg_show" />
+			<a href="javascript:void" onclick="chaoren()"><img src="__PUBLIC__/Html/img/c.png" width="100%" class="kdj_index1_bg_i1 kdj_index1_bg_hide" /></a>
+			<a href="javascript:void" onclick="bianfuxia()"><img src="__PUBLIC__/Html/img/b.png" width="100%" class="kdj_index1_bg_i2 kdj_index1_bg_show" /></a>
 		</div>
 		<div class="kdj_index1_div2">
 			<a href="javascript:go()"><img src="__PUBLIC__/Html/img/kz.png" class="kdj_index1_bg_i3"></a>
@@ -35,12 +35,32 @@
 <script>
 	var t = setInterval("ch_show()", 1000);
 	var man=0;
+	//选择超人
+	function chaoren(){
+		var temp = $("#d img");
+		$(temp[0]).removeClass("kdj_index1_bg_hide");
+		$(temp[0]).addClass("kdj_index1_bg_show");
+		$(temp[1]).removeClass("kdj_index1_bg_show");
+		man=1;
+		clearTimeout(t);
+	}
+	//选着蝙蝠侠
+	function bianfuxia(){
+		var temp = $("#d img");
+		$(temp[1]).removeClass("kdj_index1_bg_hide");
+		$(temp[1]).addClass("kdj_index1_bg_show");
+		$(temp[0]).removeClass("kdj_index1_bg_show");
+		man=2;
+		clearTimeout(t);
+	}
+
+	
 	function ch_show() {
 		var temp = $("#d img");
 		if ($(temp[0]).hasClass("kdj_index1_bg_hide")) {
 			$(temp[0]).removeClass("kdj_index1_bg_hide");
 			$(temp[0]).addClass("kdj_index1_bg_show");
-			man=1;
+			
 		} else {
 			$(temp[0]).removeClass("kdj_index1_bg_show");
 			$(temp[0]).addClass("kdj_index1_bg_hide");
@@ -48,7 +68,7 @@
 		if ($(temp[1]).hasClass("kdj_index1_bg_hide")) {
 			$(temp[1]).removeClass("kdj_index1_bg_hide");
 			$(temp[1]).addClass("kdj_index1_bg_show");
-			man=2;
+			
 		} else {
 			$(temp[1]).removeClass("kdj_index1_bg_show");
 			$(temp[1]).addClass("kdj_index1_bg_hide");
@@ -67,8 +87,15 @@
 		$(this).parent("div").hide();
 	})
 	function go(){
-		window.location.href="__URL__/f2?man="+man;
+		if(man==0)
+		{
+			alert("请选择人物");
+			
+		}else{
+			window.location.href="__URL__/f2?man="+man;
+		}
 	}
 </script>
 
-</html>
+
+    </html>
